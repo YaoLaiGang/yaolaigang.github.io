@@ -90,18 +90,21 @@
 
 
 
-<meta name="description" content="问题描述字符匹配问题    用p来匹配s. p中可能包含. * . 表示匹配任一个单一字符 * 表示匹配0到多个前一个字符 要求p和s匹配   Example 1: Input:  s=”a” Output: Explanation:   Example 2: Example 3:">
+<meta name="description" content="问题描述字符匹配问题    用p来匹配s. p中可能包含. * . 表示匹配任一个单一字符 * 表示匹配0到多个前一个字符 要求p和s匹配   Example 1: Input:   s=”aa”p = “a”   Output: false Explanation:   “a” does not match the entire string “aa”     Example 2: Input:">
 <meta name="keywords" content="DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Regular Expression Matching">
 <meta property="og:url" content="http://yoursite.com/2019/05/26/Regular-Expression-Matching/index.html">
 <meta property="og:site_name" content="残桥断雪的博客">
-<meta property="og:description" content="问题描述字符匹配问题    用p来匹配s. p中可能包含. * . 表示匹配任一个单一字符 * 表示匹配0到多个前一个字符 要求p和s匹配   Example 1: Input:  s=”a” Output: Explanation:   Example 2: Example 3:">
+<meta property="og:description" content="问题描述字符匹配问题    用p来匹配s. p中可能包含. * . 表示匹配任一个单一字符 * 表示匹配0到多个前一个字符 要求p和s匹配   Example 1: Input:   s=”aa”p = “a”   Output: false Explanation:   “a” does not match the entire string “aa”     Example 2: Input:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-26T12:38:38.671Z">
+<meta property="og:image" content="https://cn.bing.com/th?id=OIP.KxkJwLabDhEU-WmW2u8LoAHaHQ&pid=Api&rs=1&p=0">
+<meta property="og:image" content="http://pic8.nipic.com/20100702/5155385_015834315161_2.jpg">
+<meta property="og:updated_time" content="2019-05-26T13:15:42.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regular Expression Matching">
-<meta name="twitter:description" content="问题描述字符匹配问题    用p来匹配s. p中可能包含. * . 表示匹配任一个单一字符 * 表示匹配0到多个前一个字符 要求p和s匹配   Example 1: Input:  s=”a” Output: Explanation:   Example 2: Example 3:">
+<meta name="twitter:description" content="问题描述字符匹配问题    用p来匹配s. p中可能包含. * . 表示匹配任一个单一字符 * 表示匹配0到多个前一个字符 要求p和s匹配   Example 1: Input:   s=”aa”p = “a”   Output: false Explanation:   “a” does not match the entire string “aa”     Example 2: Input:">
+<meta name="twitter:image" content="https://cn.bing.com/th?id=OIP.KxkJwLabDhEU-WmW2u8LoAHaHQ&pid=Api&rs=1&p=0">
 
 
 
@@ -404,14 +407,84 @@
 </ul>
 <ol>
 <li>Example 1:<ul>
-<li>Input:<br>  s=”a”</li>
-<li>Output:</li>
-<li>Explanation:</li>
+<li>Input:  <blockquote>
+<p>s=”aa”<br>p = “a”</p>
+</blockquote>
+</li>
+<li>Output: false</li>
+<li>Explanation:  <blockquote>
+<p>“a” does not match the entire string “aa”</p>
+</blockquote>
+</li>
 </ul>
 </li>
-<li>Example 2:</li>
-<li>Example 3:</li>
+<li>Example 2:<ul>
+<li>Input:  <blockquote>
+<p>s=”aa”<br>p = “a*”</p>
+</blockquote>
+</li>
+<li>Output: true</li>
+<li>Explanation:  <blockquote>
+<p>“‘*’ means zero or more of the precedeng element, ‘a’. Therefore, by repeating ‘a’ once, it becomes “aa”</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Example 3:<ul>
+<li>Input:  <blockquote>
+<p>s=”aab”<br>p = “c*a*b”</p>
+</blockquote>
+</li>
+<li>Output: true</li>
+<li>Explanation:  <blockquote>
+<p>c can be repeated 0 times, a can be repeated 1 time. Therefore it matches “aab”.</p>
+</blockquote>
+</li>
+</ul>
+</li>
 </ol>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这是一道<strong>非常</strong>困难的题, 曾经害我苦思冥想了好几天。我刚开始甚至没想到居然能用DP解这个问题，后来苦苦求索翻阅leetcode一众大神的解释后才搞明白这个题用DP到底怎么搞<br>这是一道true false dp问题, dp[i][j] 表示了s前i个元素和p前j个元素的匹配情况<br>分情况讨论：  </p>
+<ol>
+<li>如果s[i] == p [j] || p[j] == ‘.’<br>这时候完全就看前面的情况 dp[i][j] = dp[i-1][j-1]</li>
+<li><p>如果s[i] != p [j]这个也要分情况  </p>
+<ul>
+<li><p>2.1 如果p[j] == ‘<em>‘ (ba a</em> ab a*)  </p>
+<ul>
+<li><p>2.1.1 若 p[j-1] != s[i] &amp;&amp; p[j-1] != ‘.’<br>此时, 由于上一个元素不匹配导致<em>无法复制，那么</em>只能让上一个元素清空:  </p>
+<blockquote>
+<p>dp[i][j] = dp[i][j-2]  </p>
+</blockquote>
+</li>
+<li><p>2.1.2 除上面的情况外，即*可以复制上一个元素达到匹配的目的，当然也可以不复制上一个元素:  </p>
+<blockquote>
+<p>dp[i][j] = dp[i][j-2] (<em>上一个元素清空</em>) || dp[i][j-1] (<em>\</em>只代表一个元素<em>) || dp[i-1][j] (</em>代表多个元素，如果在i前面都能和p匹配，那加一个自然也能匹配*)</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>2.2 如果p[j] != ‘*’  </p>
+<blockquote>
+<p>dp[i][j] = false</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<p>特别解释一下，为什么在2.1.2中，当代表多个元素时，匹配的是dp[i-1][j]这个奇怪的搭配。让我们来举个栗子:<br><img src="https://cn.bing.com/th?id=OIP.KxkJwLabDhEU-WmW2u8LoAHaHQ&amp;pid=Api&amp;rs=1&amp;p=0" alt="举个栗子"><br>假设我们的有  </p>
+<blockquote>
+<p>s: abbbbb<br>p: cb*  </p>
+</blockquote>
+<p>我们看到这里的*，实际上是代表了5个b,但是当我们求dp[i][j]的时候，我们无法得匹配完这些b之后前面的元素是否匹配，我们删掉这些b  </p>
+<blockquote>
+<p>s: a<br>p: c  </p>
+</blockquote>
+<p>也就是说，a,c是否匹配已经在之前迭代了。如何得知a,c的迭代位置呢？  </p>
+<blockquote>
+<p>dp[i][j] = dp[i-1][j] = …… = dp[i-6][j]</p>
+</blockquote>
+<p>这是通过我们之前已经求到的结果迭代出来的，你会发现i递减的过程其实就是在找重复元素之前的元素，所以我们直接给出了dp[i-1][j]</p>
+<h2 id="标准代码"><a href="#标准代码" class="headerlink" title="标准代码"></a>标准代码</h2><p>其实如果能看懂上面的解释的话，代码不成问题，上面的解释已经接近于伪代码了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[s.length()+<span class="number">1</span>][p.length()+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// s为空, p为空</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">// s为空， p不空</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= p.length(); j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p.charAt(j-<span class="number">1</span>)==<span class="string">'*'</span> &amp;&amp; dp[<span class="number">0</span>][j-<span class="number">2</span>]) dp[<span class="number">0</span>][j] = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//s不空，p空，直接默认false</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s.length() + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; p.length() + <span class="number">1</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(i-<span class="number">1</span>)==p.charAt(j-<span class="number">1</span>) || p.charAt(j-<span class="number">1</span>)==<span class="string">'.'</span>) dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (p.charAt(j-<span class="number">1</span>)==<span class="string">'*'</span>)&#123;</span><br><span class="line">                        <span class="keyword">if</span> (p.charAt(j-<span class="number">2</span>)!=s.charAt(i-<span class="number">1</span>)&amp;&amp;p.charAt(j-<span class="number">2</span>)!=<span class="string">'.'</span>) dp[i][j] = dp[i][j-<span class="number">2</span>];</span><br><span class="line">                        <span class="keyword">else</span> dp[i][j] = dp[i][j-<span class="number">2</span>] || dp[i][j-<span class="number">1</span>] || dp[i-<span class="number">1</span>][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.length()][p.length()];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>终于啃完这个头疼的问题了，看张图片奖励下自己吧<br><img src="http://pic8.nipic.com/20100702/5155385_015834315161_2.jpg" alt="bing图片"></p>
 
       
     </div>
@@ -626,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标准代码"><span class="nav-number">3.</span> <span class="nav-text">标准代码</span></a></li></ol></div>
             
 
           </div>
