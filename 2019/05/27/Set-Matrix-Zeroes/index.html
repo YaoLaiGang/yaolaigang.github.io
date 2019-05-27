@@ -102,7 +102,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559564397&di=30cb28ffdd1897d3444284a8a587bc33&imgtype=jpg&er=1&src=http%3A%2F%2Fstatic.oneplus.cn%2Fdata%2Fattachment%2Fforum%2F201411%2F09%2F144717fimzeep1hynehbmr.png">
 <meta property="og:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3477725904,3462716497&fm=26&gp=0.jpg">
-<meta property="og:updated_time" content="2019-05-27T12:38:17.838Z">
+<meta property="og:updated_time" content="2019-05-27T12:58:07.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set Matrix Zeroes">
 <meta name="twitter:description" content="问题描述 给矩阵置0，就是找矩阵中为0的元素，将其同行同列置0,必须是就地算法（in-place）">
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  767
+                  762
                 </span>
               
 
@@ -447,10 +447,38 @@
 <li><p>Example 1:</p>
 <ul>
 <li><p>input:  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">    [</span><br><span class="line">        [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">    ]</span><br><span class="line">    ```  </span><br><span class="line"></span><br><span class="line">    - output:  </span><br><span class="line"></span><br><span class="line">    ```python</span><br><span class="line">     [</span><br><span class="line">        [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">        [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">    ]</span><br><span class="line">    ```  </span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> Example <span class="number">2</span>:  </span><br><span class="line">    - input:  </span><br><span class="line"></span><br><span class="line">    ```python</span><br><span class="line">    [</span><br><span class="line">        [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">        [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">        [<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>]</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<p>  [</p>
+<pre><code>[1,1,1],
+[1,0,1],
+[1,1,1]
+</code></pre><p>  ]</p>
 </li>
 <li><p>output:  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>  [</p>
+<pre><code>[1,0,1],
+[0,0,0],
+[1,0,1]
+</code></pre><p>  ]</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>Example 2:  </p>
+<ul>
+<li><p>input:  </p>
+<p>  [</p>
+<pre><code>[0,1,2,0],
+[3,4,5,2],
+[1,3,1,5]
+</code></pre><p>  ]  </p>
+</li>
+<li><p>output:  </p>
+<p>  [</p>
+<pre><code>[0,0,0,0],
+[0,4,5,0],
+[0,3,1,0]
+</code></pre><p>  ]  </p>
 </li>
 </ul>
 </li>
