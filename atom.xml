@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-30T13:49:20.651Z</updated>
+  <updated>2019-08-30T13:56:35.031Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/08/30/Word-Embedding/"/>
     <id>http://yoursite.com/2019/08/30/Word-Embedding/</id>
     <published>2019-08-30T12:19:20.000Z</published>
-    <updated>2019-08-30T13:49:20.651Z</updated>
+    <updated>2019-08-30T13:56:35.031Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>核心问题：如何用一个vector表示单词？  </p></blockquote><ol><li><p>1-of-N encoding<br>这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。  </p><p> <img src="/2019/08/30/Word-Embedding/2019-08-30-20-33-07.png" alt="1-of-N encoding ">  </p><p> 但是这种方法无法表达各个单词之间的关系，比如dog和cat都是动物，解决方法是给他们再做分类<br> <img src="/2019/08/30/Word-Embedding/2019-08-30-20-36-19.png" alt="word class">  </p><p> 即使这样，这不能表达多个类别之间的关系。比如class1和class2之间其实是有关系的，因为动物是可以做跑跳的，显然这种硬分类也无法完全表达信息。  </p></li><li><p>Word Embedding<br>把每一个Word都project到一个高维空间中去，这里的高维空间要比N低多得多。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-46-27.png" alt="word embedding"><br>上图中各个点的关系可以通过在高位空间中的距离或者其他的指标来表示，也可以根据不同的标准来分类。<br>产生这种向量是非监督学习，我们只知道输入不知道输出<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-49-54.png" alt="unsupervised"><br><strong>可以使用auto-encoder吗？</strong>  </p><pre><code>显然是不可以的，输入的是onehot编码，其实是学不到什么东西的。  </code></pre></li><li><p>如何通过Word Embedding 来学习上下文信息？<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-07-42.png" alt="机器上下文学习"><br>虽然机器不懂得蔡英文和马英九，但是根据上下文是可以把蔡英文和马英九归并成一类的。  </p><ul><li>Count based（Glove Vector）<br>如果单词X，Y经常在一块出现，V(X)和V(Y)就会很接近。<br>具体做法是让V(X)和V(Y)的内积接近于X和Y共同出现的次数N<sub>x,y</sub><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-19-41.png" alt="Glove Vector"></li><li>Predition based<br>这种方法对单词的表示仍然是onehot。该方法会训练一个NN，输入是一个onehot的单词编码，输出是一个概率向量，表示某个单词紧跟着该单词的可能性大小。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-26-26.png" alt="predict based1"><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-27-15.png" alt="predict based2"><br>具体说来，其实是将上图中训练好的网络的第一层向量（Z）取出来作为该词汇的特征向量。</li></ul></li></ol>]]></content>
     
@@ -37,6 +37,8 @@
       
     
     </summary>
+    
+      <category term="Unsupervised Learning" scheme="http://yoursite.com/categories/Unsupervised-Learning/"/>
     
     
       <category term="NLP" scheme="http://yoursite.com/tags/NLP/"/>
@@ -74,7 +76,7 @@
     <link href="http://yoursite.com/2019/08/30/%E4%BD%A0%E5%A5%BD-hexo/"/>
     <id>http://yoursite.com/2019/08/30/你好-hexo/</id>
     <published>2019-08-30T01:59:46.000Z</published>
-    <updated>2019-08-30T02:57:29.934Z</updated>
+    <updated>2019-08-30T13:56:49.052Z</updated>
     
     <content type="html"><![CDATA[<h2 id="这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了"><a href="#这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了" class="headerlink" title="这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了"></a>这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了</h2>]]></content>
     
@@ -86,6 +88,8 @@
       
     
     </summary>
+    
+      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
     
     
       <category term="test" scheme="http://yoursite.com/tags/test/"/>
