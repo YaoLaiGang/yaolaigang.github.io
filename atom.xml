@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-30T02:02:56.578Z</updated>
+  <updated>2019-08-30T11:22:43.282Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,19 +17,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>你好, hexo</title>
-    <link href="http://yoursite.com/2019/08/30/%E4%BD%A0%E5%A5%BD-hexo/"/>
-    <id>http://yoursite.com/2019/08/30/你好-hexo/</id>
-    <published>2019-08-30T01:59:46.000Z</published>
-    <updated>2019-08-30T02:02:56.578Z</updated>
+    <title>小记</title>
+    <link href="http://yoursite.com/2019/08/30/%E5%B0%8F%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/08/30/小记/</id>
+    <published>2019-08-30T07:30:56.000Z</published>
+    <updated>2019-08-30T11:22:43.282Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了"><a href="#这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了" class="headerlink" title="这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了"></a>这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了</h1>]]></content>
+    <content type="html"><![CDATA[<blockquote><p><strong>闲暇之余，想写篇日记，记录自己的所见所闻.</strong>  </p></blockquote><p>我的博客已经三个月没有更新东西了， 这个三个月可能发生了一些事情，也可能没有发生什么事情，但是终究还是发生了一些事情的。</p><h3 id="”我太难了-”"><a href="#”我太难了-”" class="headerlink" title="\”我太难了\”"></a>\”我太难了\”</h3><p>“我太难了”， 当收到导师召回的消息时，这句话便脱口而出。纵观我没几天的暑假，这可能是最悲惨的消息了。我的暑假分布大概是这样的：98%的时间去练习科目三并最后准备考驾照，2%的时间去跪棚。整个暑假都在奔波中度过。<br>那天是台风利奇马来临的日子，刚开始它还是听和蔼的，只是淅淅沥沥的小雨，甚至给人一种  <em>渭城朝雨浥轻尘，客舍青青柳色新</em> 的错觉。我踏着单车，带着一种刚回家的喜悦奔向了科目三的练习地址。<br>“这不还在市区么，虽然是外环，有地图APP肯定没问题”， 自信满满的我如是道。<br>开始只是濛濛细雨，周围是一条小河，这种环境让我似乎穿梭在江南的小镇。我顺着怡人的柏油路，一边骑车一边哼着小曲赶往目的地。<br>“这地图为啥没标出来？”我一阵惊呼，这是到目的地的必经之路–一座桥。不幸的是这座桥似乎正在被修，因为它被封死了。<br>雨兄似乎也很给力，知道我认不得路的时候顺便增大了雨势。嗯，真的是加量不加价呢。<br>经过一番挣扎和一顿问路后，我终于曲曲折折的绕到了练车的地方。此种心酸不必多说，比如全身湿透这种基本操作，可以尽情脑补这种囧事。<br>总而言之，我还是到了，虽然晚了半个小时。<br>“XXX教练今天休息，你明天再来吧”。<br>当时我的心里其实是很平静的。“真正的勇士，敢于正视淋漓的大到暴雨，敢于直面被人放鸽子的惨淡人生”，这可能是我当初最好的感受。此时的雨兄可以称得上是大到暴雨了，我的心里也是大到暴雨。<br><strong>未完待遇</strong></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了&quot;&gt;&lt;a href=&quot;#这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了&quot; class=&quot;headerlink&quot; title=&quot;这是另一台笔记本
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;闲暇之余，想写篇日记，记录自己的所见所闻.&lt;/strong&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我的博客已经三个月没有更新东西了， 这个三个月可能发生了一些事情，也可能没有发生什么事情，但是终究还是发生了一些事情的。&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>你好, hexo</title>
+    <link href="http://yoursite.com/2019/08/30/%E4%BD%A0%E5%A5%BD-hexo/"/>
+    <id>http://yoursite.com/2019/08/30/你好-hexo/</id>
+    <published>2019-08-30T01:59:46.000Z</published>
+    <updated>2019-08-30T02:57:29.934Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了"><a href="#这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了" class="headerlink" title="这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了"></a>这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了&quot;&gt;&lt;a href=&quot;#这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了&quot; class=&quot;headerlink&quot; title=&quot;这是另一台笔记本
       
     
     </summary>
