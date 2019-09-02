@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-30T13:56:35.031Z</updated>
+  <updated>2019-09-02T08:39:29.154Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2019/08/30/Word-Embedding/"/>
     <id>http://yoursite.com/2019/08/30/Word-Embedding/</id>
     <published>2019-08-30T12:19:20.000Z</published>
-    <updated>2019-08-30T13:56:35.031Z</updated>
+    <updated>2019-09-02T08:39:29.154Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>核心问题：如何用一个vector表示单词？  </p></blockquote><ol><li><p>1-of-N encoding<br>这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。  </p><p> <img src="/2019/08/30/Word-Embedding/2019-08-30-20-33-07.png" alt="1-of-N encoding ">  </p><p> 但是这种方法无法表达各个单词之间的关系，比如dog和cat都是动物，解决方法是给他们再做分类<br> <img src="/2019/08/30/Word-Embedding/2019-08-30-20-36-19.png" alt="word class">  </p><p> 即使这样，这不能表达多个类别之间的关系。比如class1和class2之间其实是有关系的，因为动物是可以做跑跳的，显然这种硬分类也无法完全表达信息。  </p></li><li><p>Word Embedding<br>把每一个Word都project到一个高维空间中去，这里的高维空间要比N低多得多。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-46-27.png" alt="word embedding"><br>上图中各个点的关系可以通过在高位空间中的距离或者其他的指标来表示，也可以根据不同的标准来分类。<br>产生这种向量是非监督学习，我们只知道输入不知道输出<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-49-54.png" alt="unsupervised"><br><strong>可以使用auto-encoder吗？</strong>  </p><pre><code>显然是不可以的，输入的是onehot编码，其实是学不到什么东西的。  </code></pre></li><li><p>如何通过Word Embedding 来学习上下文信息？<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-07-42.png" alt="机器上下文学习"><br>虽然机器不懂得蔡英文和马英九，但是根据上下文是可以把蔡英文和马英九归并成一类的。  </p><ul><li>Count based（Glove Vector）<br>如果单词X，Y经常在一块出现，V(X)和V(Y)就会很接近。<br>具体做法是让V(X)和V(Y)的内积接近于X和Y共同出现的次数N<sub>x,y</sub><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-19-41.png" alt="Glove Vector"></li><li>Predition based<br>这种方法对单词的表示仍然是onehot。该方法会训练一个NN，输入是一个onehot的单词编码，输出是一个概率向量，表示某个单词紧跟着该单词的可能性大小。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-26-26.png" alt="predict based1"><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-27-15.png" alt="predict based2"><br>具体说来，其实是将上图中训练好的网络的第一层向量（Z）取出来作为该词汇的特征向量。</li></ul></li></ol>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>核心问题：如何用一个vector表示单词？  </p></blockquote><ol><li><p>1-of-N encoding<br>这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。  </p><p> <img src="/2019/08/30/Word-Embedding/2019-08-30-20-33-07.png" alt="1-of-N encoding ">  </p><p> 但是这种方法无法表达各个单词之间的关系，比如dog和cat都是动物，解决方法是给他们再做分类<br> <img src="/2019/08/30/Word-Embedding/2019-08-30-20-36-19.png" alt="word class">  </p><p> 即使这样，这不能表达多个类别之间的关系。比如class1和class2之间其实是有关系的，因为动物是可以做跑跳的，显然这种硬分类也无法完全表达信息。</p></li><li><p>Word Embedding<br>把每一个Word都project到一个高维空间中去，这里的高维空间要比N低多得多。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-46-27.png" alt="word embedding"><br>上图中各个点的关系可以通过在高位空间中的距离或者其他的指标来表示，也可以根据不同的标准来分类。<br>产生这种向量是非监督学习，我们只知道输入不知道输出<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-49-54.png" alt="unsupervised"><br><strong>可以使用auto-encoder吗？</strong>  </p><pre><code>显然是不可以的，输入的是onehot编码，其实是学不到什么东西的。  </code></pre></li><li><p>如何通过Word Embedding 来学习上下文信息？<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-07-42.png" alt="机器上下文学习"><br>虽然机器不懂得蔡英文和马英九，但是根据上下文是可以把蔡英文和马英九归并成一类的。  </p><ul><li>Count based（Glove Vector）<br>如果单词X，Y经常在一块出现，V(X)和V(Y)就会很接近。<br>具体做法是让V(X)和V(Y)的内积接近于X和Y共同出现的次数N<sub>x,y</sub><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-19-41.png" alt="Glove Vector"></li><li>Predition based  <ul><li>这种方法对单词的表示仍然是onehot。该方法会训练一个NN，输入是一个onehot的单词编码，输出是一个概率向量，表示某个单词紧跟着该单词的可能性大小。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-26-26.png" alt="predict based1"><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-27-15.png" alt="predict based2"><br>具体说来，其实是将上图中训练好的网络的第一层向量（Z）取出来作为该词汇的特征向量。  </li><li><strong>为什么这种方法会奏效呢？</strong><br>中间的隐藏层，需要把同类或者相近的词汇投射到相同的区间。只有这样才能降低最终的loss。这种方法当然自动的考虑了上下文关系。  </li><li><strong>只用一个单词来预测下一个单词肯定是不太现实， 所以引入了Sharing Parameters的模型</strong><br>其实就是用前N个词汇来预测下一个词汇<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-02-47.png" alt="Sharing Parameters"><br>如上图，这里前N个单词的权重是共享的，对应的连接处是相同的。其原因一是为了计算方便，二是为了保证同一个单词在不同位置输入得到的特征向量是相同的(<em>比如，就职前面的蔡英文和马英九不应该因为顺序不同而得到大相径庭的结果</em>)。<br>上面的公式给了一个等价变换。要得到单词的embedding，在训练完之后，只需要乘以那个W即可得到对应的embeddding。<br>另外在实际训练的时候，为了保持W相同，应该做到：<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-14-15.png" alt="make qual"><br>这个想法十分的巧妙，对反向传播做了小小的改动。  </li><li>基本的训练过程<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-23-47.png" alt="基本训练过程"><br>当然变形的训练有好多种，他们的优势都各有千秋：  <ol><li>Continues bug of word<br>之前是考虑上文，这里改成了考虑上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-30-04.png" alt="CBOW"></li><li>Skip-gram<br>用中间的Word来预测上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-32-26.png" alt="Skip-gram"></li></ol></li></ul></li></ul></li></ol>]]></content>
     
     <summary type="html">
     
@@ -50,7 +50,7 @@
     <link href="http://yoursite.com/2019/08/30/%E5%B0%8F%E8%AE%B0/"/>
     <id>http://yoursite.com/2019/08/30/小记/</id>
     <published>2019-08-30T07:30:56.000Z</published>
-    <updated>2019-08-30T11:30:13.592Z</updated>
+    <updated>2019-08-31T15:05:09.328Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p><strong>闲暇之余，想写篇日记，记录自己的所见所闻.</strong>  </p></blockquote><p>我的博客已经三个月没有更新东西了， 这个三个月可能发生了一些事情，也可能没有发生什么事情，但是终究还是发生了一些事情的。</p><h3 id="”我太难了-”"><a href="#”我太难了-”" class="headerlink" title="\”我太难了\”"></a>\”我太难了\”</h3><p>“我太难了”， 当收到导师召回的消息时，这句话便脱口而出。纵观我没几天的暑假，这可能是最悲惨的消息了。我的暑假分布大概是这样的：98%的时间去练习科目三并最后准备考驾照，2%的时间去跪棚。整个暑假都在奔波中度过。<br>那天是台风利奇马来临的日子，刚开始它还是听和蔼的，只是淅淅沥沥的小雨，甚至给人一种  <em>渭城朝雨浥轻尘，客舍青青柳色新</em> 的错觉。我踏着单车，带着一种刚回家的喜悦奔向了科目三的练习地址。<br>“这不还在市区么，虽然是外环，有地图APP肯定没问题”， 自信满满的我如是道。<br>开始只是濛濛细雨，周围是一条小河，这种环境让我似乎穿梭在江南的小镇。我顺着怡人的柏油路，一边骑车一边哼着小曲赶往目的地。<br>“这地图为啥没标出来？”我一阵惊呼，这是到目的地的必经之路–一座桥。不幸的是这座桥似乎正在被修，因为它被封死了。<br>雨兄似乎也很给力，知道我认不得路的时候顺便增大了雨势。嗯，真的是加量不加价呢。<br>经过一番挣扎和一顿问路后，我终于曲曲折折的绕到了练车的地方。此种心酸不必多说，比如全身湿透这种基本操作，可以尽情脑补这种囧事。<br>总而言之，我还是到了，虽然晚了半个小时。<br>“XXX教练今天休息，你明天再来吧”。<br>当时我的心里其实是很平静的。“真正的勇士，敢于正视淋漓的大到暴雨，敢于直面被人放鸽子的惨淡人生”，这可能是我当初最好的感受。此时的雨兄可以称得上是大到暴雨了，我的心里也是大到暴雨。<br><strong>未完待遇</strong></p>]]></content>
     
@@ -66,6 +66,8 @@
     
     </summary>
     
+      <category term="日记" scheme="http://yoursite.com/categories/%E6%97%A5%E8%AE%B0/"/>
+    
     
       <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
     
@@ -76,7 +78,7 @@
     <link href="http://yoursite.com/2019/08/30/%E4%BD%A0%E5%A5%BD-hexo/"/>
     <id>http://yoursite.com/2019/08/30/你好-hexo/</id>
     <published>2019-08-30T01:59:46.000Z</published>
-    <updated>2019-08-30T13:56:49.052Z</updated>
+    <updated>2019-08-30T14:03:51.844Z</updated>
     
     <content type="html"><![CDATA[<h2 id="这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了"><a href="#这是另一台笔记本，我把项目移植过来以进行测试-如果这篇文章出现了，那说明我移植成功了" class="headerlink" title="这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了"></a>这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了</h2>]]></content>
     
