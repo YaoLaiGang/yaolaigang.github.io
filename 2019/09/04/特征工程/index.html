@@ -79,12 +79,10 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="machine learning,">
 
 
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="残桥断雪的博客" type="application/atom+xml">
@@ -94,19 +92,18 @@
 
 
 
-<meta name="description" content="残桥断雪,热爱代码、科技的cs研究僧，热爱动手。愿意接受新的东西。无聊时爱读“闲书”，《三体》粉丝，《天龙八部》、《倚天屠龙记》、《笑傲江湖》等金庸粉丝。《孙子兵法》粉丝。《万历十五年》、《明朝那些事儿》等明朝粉丝。python、java的忠实拥护者，deepLearning、bigdata的调包侠。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的简介">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="1.基本数值特征 对于刚拿到的数据，先进行缺失值处理  对于离散值，我们常用  LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类    对于二值特征:Sklearn中的二值化类是Binarizer，当然Pandas直接判断也很方便    对于多项式特征:也就是多个特征指标的组合(一">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="特征工程">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/特征工程/index.html">
 <meta property="og:site_name" content="残桥断雪的博客">
-<meta property="og:description" content="残桥断雪,热爱代码、科技的cs研究僧，热爱动手。愿意接受新的东西。无聊时爱读“闲书”，《三体》粉丝，《天龙八部》、《倚天屠龙记》、《笑傲江湖》等金庸粉丝。《孙子兵法》粉丝。《万历十五年》、《明朝那些事儿》等明朝粉丝。python、java的忠实拥护者，deepLearning、bigdata的调包侠。">
+<meta property="og:description" content="1.基本数值特征 对于刚拿到的数据，先进行缺失值处理  对于离散值，我们常用  LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类    对于二值特征:Sklearn中的二值化类是Binarizer，当然Pandas直接判断也很方便    对于多项式特征:也就是多个特征指标的组合(一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cn.bing.com/th?id=OIP.XaA83DgxTKL1xtq_m6U7yQHaFj&pid=Api&rs=1&p=0">
-<meta property="og:updated_time" content="2019-08-30T01:49:29.561Z">
+<meta property="og:updated_time" content="2019-09-04T13:05:45.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的简介">
-<meta name="twitter:description" content="残桥断雪,热爱代码、科技的cs研究僧，热爱动手。愿意接受新的东西。无聊时爱读“闲书”，《三体》粉丝，《天龙八部》、《倚天屠龙记》、《笑傲江湖》等金庸粉丝。《孙子兵法》粉丝。《万历十五年》、《明朝那些事儿》等明朝粉丝。python、java的忠实拥护者，deepLearning、bigdata的调包侠。">
-<meta name="twitter:image" content="https://cn.bing.com/th?id=OIP.XaA83DgxTKL1xtq_m6U7yQHaFj&pid=Api&rs=1&p=0">
+<meta name="twitter:title" content="特征工程">
+<meta name="twitter:description" content="1.基本数值特征 对于刚拿到的数据，先进行缺失值处理  对于离散值，我们常用  LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类    对于二值特征:Sklearn中的二值化类是Binarizer，当然Pandas直接判断也很方便    对于多项式特征:也就是多个特征指标的组合(一">
 
 
 
@@ -136,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/04/特征工程/">
 
 
 
 
 
-  <title>我的简介 | 残桥断雪的博客</title>
+  <title>特征工程 | 残桥断雪的博客</title>
   
 
 
@@ -299,34 +296,240 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/特征工程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="laigang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/p.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="残桥断雪的博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">我的简介</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p><strong>残桥断雪</strong>,热爱代码、科技的cs研究僧，热爱动手。愿意接受新的东西。<br><img src="https://cn.bing.com/th?id=OIP.XaA83DgxTKL1xtq_m6U7yQHaFj&amp;pid=Api&amp;rs=1&amp;p=0" alt="三体"><br>无聊时爱读“闲书”，《三体》粉丝，《天龙八部》、《倚天屠龙记》、《笑傲江湖》等金庸粉丝。《孙子兵法》粉丝。《万历十五年》、《明朝那些事儿》等明朝粉丝。<br>python、java的忠实拥护者，deepLearning、bigdata的调包侠。</p>
-
+          <h1 class="post-title" itemprop="name headline">特征工程</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-04T15:41:56+08:00">
+                2019-09-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/feature-engineering/" itemprop="url" rel="index">
+                    <span itemprop="name">feature engineering</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/09/04/特征工程/" class="leancloud_visitors" data-flag-title="特征工程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  536
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="1-基本数值特征"><a href="#1-基本数值特征" class="headerlink" title="1.基本数值特征"></a>1.基本数值特征</h3><ul>
+<li><p>对于刚拿到的数据，先进行缺失值处理</p>
+</li>
+<li><p>对于离散值，我们常用  LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的<strong>get_dummies()</strong>方法，当然sklearn 也有对应的类  </p>
+</li>
+<li><p>对于二值特征:Sklearn中的二值化类是<strong>Binarizer</strong>，当然Pandas直接判断也很方便  </p>
+</li>
+<li><p>对于多项式特征:也就是多个特征指标的组合(一般支持向量机用的比较多，乘积、平方等等)，使用<strong>PolynomialFeatures</strong>来实现。</p>
+</li>
+<li><p>对于binning(连续)特征:可以做离散化，划分区间分成几个类(比如年龄)，可以直接写<strong>map()</strong>函数映射。比较常用的方法,可以直接试一试，效果不好说。</p>
+</li>
+<li><p>分位数切分: 四分位，二分位，四分之三分位等切分成离散的方式，常用pandans的<strong>quantile()</strong>方法，然后用<strong>qcut()</strong>的方法进行切分  </p>
+</li>
+<li><p>对数变换(COX-BOX): 对于分布是正态分布假设的算法(可以用偏度来判定)，数据本身可能偏度很大，而做了对数变换有可能使得其更接近对数变换。使用numpy.log()即可。COX-BOX是另一种更复杂的对数变换，其目的也是让数据近似于正态分布。</p>
+</li>
+</ul>
+<h3 id="2-日期特征处理"><a href="#2-日期特征处理" class="headerlink" title="2.日期特征处理"></a>2.日期特征处理</h3><p>一般的日期转化为dataTime格式，可以直接把年月日拿出来用的数据(apply)。提取出年月日之后可以当成特征，也可以二次加工。比如四季、早晚、前半年、后半年等等。<br>整体的思路是:前期多提特征，后期再筛选。  </p>
+<h3 id="3-文本特征处理"><a href="#3-文本特征处理" class="headerlink" title="3.文本特征处理"></a>3.文本特征处理</h3><p>文本特征的难度是如何让计算机认识这些文字，文字本身对于计算机来说很难提取出特征<br>可以使用<strong>nltk</strong>工具包进行预处理，具体使用应该专门学习<br>关于语句的编码，常用的有<em>词袋模型</em>(对输入的词进行编码，句子中出现的词表示为1，未出现的词表示为0，其实就是词汇分布表，并包含有词频)</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/30/Word-Embedding/" rel="next" title="Word Embedding">
+                <i class="fa fa-chevron-left"></i> Word Embedding
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -362,8 +565,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -454,6 +666,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本数值特征"><span class="nav-number">1.</span> <span class="nav-text">1.基本数值特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-日期特征处理"><span class="nav-number">2.</span> <span class="nav-text">2.日期特征处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-文本特征处理"><span class="nav-number">3.</span> <span class="nav-text">3.文本特征处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
