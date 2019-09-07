@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  865
+                  867
                 </span>
               
 
@@ -471,7 +471,7 @@
 <li>Predition based  <ul>
 <li>这种方法对单词的表示仍然是onehot。该方法会训练一个NN，输入是一个onehot的单词编码，输出是一个概率向量，表示某个单词紧跟着该单词的可能性大小。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-26-26.png" alt="predict based1"><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-27-15.png" alt="predict based2"><br>具体说来，其实是将上图中训练好的网络的第一层向量（Z）取出来作为该词汇的特征向量。  </li>
 <li><strong>为什么这种方法会奏效呢？</strong><br>中间的隐藏层，需要把同类或者相近的词汇投射到相同的区间。只有这样才能降低最终的loss。这种方法当然自动的考虑了上下文关系。  </li>
-<li><strong>只用一个单词来预测下一个单词肯定是不太现实， 所以引入了Sharing Parameters的模型</strong><br>其实就是用前N个词汇来预测下一个词汇<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-02-47.png" alt="Sharing Parameters"><br>如上图，这里前N个单词的权重是共享的，对应的连接处是相同的。其原因一是为了计算方便，二是为了保证同一个单词在不同位置输入得到的特征向量是相同的(<em>比如，就职前面的蔡英文和马英九不应该因为顺序不同而得到大相径庭的结果</em>)。<br>上面的公式给了一个等价变换。要得到单词的embedding，在训练完之后，只需要乘以那个W即可得到对应的embeddding。<br>另外在实际训练的时候，为了保持W相同，应该做到：<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-14-15.png" alt="make qual"><br>这个想法十分的巧妙，对反向传播做了小小的改动。  </li>
+<li><strong>只用一个单词来预测下一个单词肯定是不太现实， 所以引入了Sharing Parameters的模型</strong><br>其实就是用前N个词汇来预测下一个词汇<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-02-47.png" alt="Sharing Parameters"><br>如上图，这里前N个单词的权重是共享的，对应的连接处是相同的。其原因一是为了计算方便，二是为了保证同一个单词在不同位置输入得到的特征向量是相同的(_比如，就职前面的蔡英文和马英九不应该因为顺序不同而得到大相径庭的结果_)。<br>上面的公式给了一个等价变换。要得到单词的embedding，在训练完之后，只需要乘以那个W即可得到对应的embeddding。<br>另外在实际训练的时候，为了保持W相同，应该做到：<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-14-15.png" alt="make qual"><br>这个想法十分的巧妙，对反向传播做了小小的改动。  </li>
 <li>基本的训练过程<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-23-47.png" alt="基本训练过程"><br>当然变形的训练有好多种，他们的优势都各有千秋：  <ol>
 <li>Continues bug of word<br>之前是考虑上文，这里改成了考虑上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-30-04.png" alt="CBOW"></li>
 <li>Skip-gram<br>用中间的Word来预测上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-32-26.png" alt="Skip-gram"></li>
