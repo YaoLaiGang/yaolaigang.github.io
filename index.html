@@ -442,14 +442,11 @@
       
         
           
-          
+          1.基本数值特征
 
-1.基本数值特征
 对于刚拿到的数据，先进行缺失值处理
-
-对于离散值，我们常用  LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类  
-
-对于二值特征:Sklearn中的二值化类是
+对于离散值，我们常用 LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类
+对于二值特征:Sklearn中的二值化类是Binari
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -600,7 +597,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  867
+                  872
                 </span>
               
 
@@ -640,12 +637,15 @@
         
           
           
-核心问题：如何用一个vector表示单词？  
+核心问题：如何用一个vector表示单词？
 
 
-1-of-N encoding这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。  
-   
- 但是这种方法无法表达各个单词之间的关系，比如dog和cat都是动物，解
+1-of-N encoding
+这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。
+
+1-of-N encoding
+
+但是这种方法无法表达各个单词之间的关系，比如dog
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -796,7 +796,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  592
+                  594
                 </span>
               
 
@@ -812,7 +812,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -836,10 +836,11 @@
         
           
           
-闲暇之余，想写篇日记，记录自己的所见所闻.  
+闲暇之余，想写篇日记，记录自己的所见所闻.
 
 我的博客已经三个月没有更新东西了， 这个三个月可能发生了一些事情，也可能没有发生什么事情，但是终究还是发生了一些事情的。
-\”我太难了\”“我太难了”， 当收到导师召回的消息时，这句话便脱口而出。纵观我没几天的暑假，这可能是最悲惨的消息了。我的暑假
+&quot;我太难了&quot;
+&quot;我太难了&quot;， 当收到导师召回的消息时，这句话便脱口而出。纵观我没几天的暑假
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1030,6 +1031,7 @@
         
           
           这是另一台笔记本，我把项目移植过来以进行测试, 如果这篇文章出现了，那说明我移植成功了
+
           
           <!--noindex-->
           <div class="post-button text-center">
@@ -1158,7 +1160,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  73
+                  78
                 </span>
               
 
@@ -1348,7 +1350,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  762
+                  766
                 </span>
               
 
@@ -1386,7 +1388,8 @@
 
       
         
-          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p> 给矩阵置0，就是找矩阵中为0的元素，将其同行同列置0,必须是就地算法（in-place）<br></p>
+          <h2 id="问题描述">问题描述</h2>
+<p>给矩阵置0，就是找矩阵中为0的元素，将其同行同列置0,必须是就地算法（in-place）<br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/27/Set-Matrix-Zeroes/#more" rel="contents">
@@ -1536,7 +1539,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  882
+                  923
                 </span>
               
 
@@ -1552,7 +1555,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -1575,7 +1578,8 @@
       
         
           
-          问题描述字符匹配问题  
+          问题描述
+字符匹配问题
 
 用p来匹配s. p中可能包含. *
 . 表示匹配任一个单一字符
@@ -1584,13 +1588,12 @@
 
 
 Example 1:
-Input:  
-s=”aa”p = “a”
 
-
+Input:
+&gt; s=&quot;aa&quot;
+&gt; p = &quot;a&quot;
 Output: false
-Explanation:  
-“a” does not 
+E
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1741,7 +1744,7 @@ Explanation:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  190
+                  201
                 </span>
               
 
@@ -1780,8 +1783,10 @@ Explanation:
       
         
           
-          问题描述这道题是easy题：You are climbing a stair case. It takes n steps to reach to the top.
-Each time you can either climb 1 or 2 steps. In how many distinct w
+          问题描述
+这道题是easy题：
+You are climbing a stair case. It takes n steps to reach to the top.
+Each time you can either climb 1 or 2 steps. In how many distinct
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1970,9 +1975,11 @@ Each time you can either climb 1 or 2 steps. In how many distinct w
 
       
         
-          <p><img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=b5fc92eb75094b36cf9f13bfc2a517bc/d1160924ab18972b50566cfee5cd7b899e510a91.jpg" alt="孔雀东南飞插图"></p>
+          <figure>
+<img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=b5fc92eb75094b36cf9f13bfc2a517bc/d1160924ab18972b50566cfee5cd7b899e510a91.jpg" alt="孔雀东南飞插图"><figcaption>孔雀东南飞插图</figcaption>
+</figure>
 <ul>
-<li>_汉末建安中，庐江府小吏焦仲卿妻刘氏，为仲卿母所遣，自誓不嫁。其家逼之，乃投水而死。仲卿闻之，亦自缢于庭树。时人伤之，为诗云尔。_</li></ul>
+<li><em>汉末建安中，庐江府小吏焦仲卿妻刘氏，为仲卿母所遣，自誓不嫁。其家逼之，乃投水而死。仲卿闻之，亦自缢于庭树。时人伤之，为诗云尔。</em><br></li></ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/24/中文测试/#more" rel="contents">
