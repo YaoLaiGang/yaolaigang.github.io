@@ -113,7 +113,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/30/Word-Embedding/2019-09-02-16-23-47.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/30/Word-Embedding/2019-09-02-16-30-04.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/30/Word-Embedding/2019-09-02-16-32-26.png">
-<meta property="og:updated_time" content="2019-09-04T07:44:57.201Z">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/Word-Embedding/2019-09-10-19-59-06.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/Word-Embedding/2019-09-10-20-00-54.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/Word-Embedding/2019-09-10-20-04-38.png">
+<meta property="og:updated_time" content="2019-09-10T12:12:59.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Word Embedding">
 <meta name="twitter:description" content="核心问题：如何用一个vector表示单词？   1-of-N encoding 这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。  1-of-N encoding  但是这种方法无法表达各个单词之间的关系，比如dog和cat都是动物，解决方法是给他们再做分类  即使这样，这不能表达多个类别之间的关系。比如class">
@@ -416,7 +419,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  872
+                  1.2k
                 </span>
               
 
@@ -432,7 +435,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -472,7 +475,8 @@
 <img src="/2019/08/30/Word-Embedding/2019-08-30-20-49-54.png" alt="unsupervised"><br>
 <strong>可以使用auto-encoder吗？</strong></p>
 <pre><code> 显然是不可以的，输入的是onehot编码，其实是学不到什么东西的。  </code></pre></li>
-<li>如何通过Word Embedding 来学习上下文信息？ <img src="/2019/08/30/Word-Embedding/2019-08-30-21-07-42.png" alt="机器上下文学习"><br>
+<li>如何通过Word Embedding 来学习上下文信息?<br>
+<img src="/2019/08/30/Word-Embedding/2019-08-30-21-07-42.png" alt="机器上下文学习"><br>
 虽然机器不懂得蔡英文和马英九，但是根据上下文是可以把蔡英文和马英九归并成一类的。
 <ul>
 <li>Count based（Glove Vector）<br>
@@ -510,6 +514,26 @@
 <img src="/2019/08/30/Word-Embedding/2019-09-02-16-32-26.png" alt="Skip-gram"></li>
 </ol></li>
 </ul></li>
+</ul></li>
+<li>应用<br>
+对于我们训练出来的词向量，还有很多有意思的操作。
+<ul>
+<li>比如对两个词向量做减法，就能得到一些规律:<br>
+<span class="math inline">\(V(hotter)-V(hot)\,\approx\,V(bigger)-V(big)\)</span><br>
+<span class="math inline">\(V(Rome)-V(Italy)\,\approx\,V(Berlin)-V(Germany)\)</span><br>
+<span class="math inline">\(V(king)-V(queen)\,\approx\,V(uncle)-V(aunt)\)</span><br>
+那么我们的机器就可以推测，罗马的意大利就和柏林的？？一样？ <span class="math inline">\(Compute\,V(Berlin)-V(Rome)+V(Italy)\)</span><br>
+之后就寻找最接近上述结果的词向量，就能找到答案<br>
+</li>
+<li>我们还可以做多语言的Word Embedding，中英文词汇翻译也可以做到<br>
+<img src="/2019/08/30/Word-Embedding/2019-09-10-19-59-06.png" alt="Multi-lingual Embedding"><br>
+就像上面一样，我们可以学习一些对应关系，然后就可以进行翻译这种功能了。<br>
+</li>
+<li>除了对文字的Embedding，还可以对图像做<br>
+<img src="/2019/08/30/Word-Embedding/2019-09-10-20-00-54.png" alt="Multi-domain Embedding"><br>
+这种方式可以用来做一些分类功能，因为传统的方法无法区分新增加的类别。这种方法即使没有这一类，至少也能区别出来不是已知的类别<br>
+</li>
+<li>我们甚至可以多document做Embedding，最简单的方法就是对文档做词袋，然后用auto-encoder。但是词袋无法考虑语言的顺序，会失去很多的信息。 下面是一些解决办法，需要深入研究可以直接去拜读。 <img src="/2019/08/30/Word-Embedding/2019-09-10-20-04-38.png" alt="Beyond Bag of Word"></li>
 </ul></li>
 </ol>
 
@@ -1410,6 +1434,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
