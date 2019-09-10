@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-08T07:46:16.653Z</updated>
+  <updated>2019-09-10T13:39:44.823Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Neighbor Embedding</title>
+    <link href="http://yoursite.com/2019/09/10/Neighbor-Embedding/"/>
+    <id>http://yoursite.com/2019/09/10/Neighbor-Embedding/</id>
+    <published>2019-09-10T12:53:32.000Z</published>
+    <updated>2019-09-10T13:39:44.823Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>简单的说，Neighbor Embedding是一种降维方法，而且是无监督的，利用的是各个单词的临近关系</p></blockquote><h3 id="manifold-learning流形学习">Manifold Learning(流形学习)</h3><p>对于降维问题的思考在于，我们的降维在高维空间和低维空间看到的东西是不同的：<br><img src="/2019/09/10/Neighbor-Embedding/2019-09-10-21-02-29.png" alt="高维空间"><br>上图很容易看到，蓝色的点距离绿色的点更近、距离红色的点更远。但是如果我们只是简单的压扁，就会造成蓝色的点距离红色的点更近的错觉，这就是降维导致的信息丢失。<br>我们流形学习的思想就是：<strong>拉平</strong>这个高维空间，而不是<strong>压扁</strong>这个高位空间，以防止丢失信息：<br><img src="/2019/09/10/Neighbor-Embedding/2019-09-10-21-08-04.png" alt="拉平空间"></p><ol type="1"><li>Locally Linear Embedding(LLE)<br>这种算法的思路是保持数据中任意一个元素和其临近的K个元素的关系<span class="math inline">\(w_{i,j}\)</span>保持不变: <span class="math inline">\(Find\, a\,set\,of\,w_{i,j}\,minimizing\\\sum_{i}\|x^i\,-\,\sum_{j}w_{i,j}x^j\|_2\)</span><br>Then find the dimension reduction results <span class="math inline">\(z^i\)</span> and <span class="math inline">\(z^j\)</span> based on <span class="math inline">\(w_{i,j}\)</span>:<br><img src="/2019/09/10/Neighbor-Embedding/2019-09-10-21-38-24.png" alt="LLE"></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;简单的说，Neighbor Embedding是一种降维方法，而且是无监督的，利用的是各个单词的临近关系&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;manifold-learning流形学习&quot;&gt;Manifold Learning(流形学习
+      
+    
+    </summary>
+    
+      <category term="Unsupervised Learning" scheme="http://yoursite.com/categories/Unsupervised-Learning/"/>
+    
+    
+      <category term="machine learning" scheme="http://yoursite.com/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>特征工程</title>
@@ -49,9 +77,9 @@
     <link href="http://yoursite.com/2019/08/30/Word-Embedding/"/>
     <id>http://yoursite.com/2019/08/30/Word-Embedding/</id>
     <published>2019-08-30T12:19:20.000Z</published>
-    <updated>2019-09-10T12:12:59.081Z</updated>
+    <updated>2019-09-10T12:52:30.362Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>核心问题：如何用一个vector表示单词？</p></blockquote><ol type="1"><li><p>1-of-N encoding<br>这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。</p><figure><img src="/2019/08/30/Word-Embedding/2019-08-30-20-33-07.png" alt="1-of-N encoding"><figcaption>1-of-N encoding</figcaption></figure><p>但是这种方法无法表达各个单词之间的关系，比如dog和cat都是动物，解决方法是给他们再做分类<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-36-19.png" alt="word class"></p><p>即使这样，这不能表达多个类别之间的关系。比如class1和class2之间其实是有关系的，因为动物是可以做跑跳的，显然这种硬分类也无法完全表达信息。</p></li><li><p>Word Embedding 把每一个Word都project到一个高维空间中去，这里的高维空间要比N低多得多。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-46-27.png" alt="word embedding"><br>上图中各个点的关系可以通过在高位空间中的距离或者其他的指标来表示，也可以根据不同的标准来分类。<br>产生这种向量是非监督学习，我们只知道输入不知道输出<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-49-54.png" alt="unsupervised"><br><strong>可以使用auto-encoder吗？</strong></p><pre><code> 显然是不可以的，输入的是onehot编码，其实是学不到什么东西的。  </code></pre></li><li>如何通过Word Embedding 来学习上下文信息?<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-07-42.png" alt="机器上下文学习"><br>虽然机器不懂得蔡英文和马英九，但是根据上下文是可以把蔡英文和马英九归并成一类的。<ul><li>Count based（Glove Vector）<br>如果单词X，Y经常在一块出现，V(X)和V(Y)就会很接近。<br>具体做法是让V(X)和V(Y)的内积接近于X和Y共同出现的次数N<sub>x,y</sub><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-19-41.png" alt="Glove Vector"></li><li>Predition based<ul><li>这种方法对单词的表示仍然是onehot。该方法会训练一个NN，输入是一个onehot的单词编码，输出是一个概率向量，表示某个单词紧跟着该单词的可能性大小。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-26-26.png" alt="predict based1"><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-27-15.png" alt="predict based2"><br>具体说来，其实是将上图中训练好的网络的第一层向量（Z）取出来作为该词汇的特征向量。<br></li><li><strong>为什么这种方法会奏效呢？</strong><br>中间的隐藏层，需要把同类或者相近的词汇投射到相同的区间。只有这样才能降低最终的loss。这种方法当然自动的考虑了上下文关系。<br></li><li><strong>只用一个单词来预测下一个单词肯定是不太现实， 所以引入了Sharing Parameters的模型</strong><br>其实就是用前N个词汇来预测下一个词汇<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-02-47.png" alt="Sharing Parameters"><br>如上图，这里前N个单词的权重是共享的，对应的连接处是相同的。其原因一是为了计算方便，二是为了保证同一个单词在不同位置输入得到的特征向量是相同的(<em>比如，就职前面的蔡英文和马英九不应该因为顺序不同而得到大相径庭的结果</em>)。<br>上面的公式给了一个等价变换。要得到单词的embedding，在训练完之后，只需要乘以那个W即可得到对应的embeddding。<br>另外在实际训练的时候，为了保持W相同，应该做到：<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-14-15.png" alt="make qual"><br>这个想法十分的巧妙，对反向传播做了小小的改动。<br></li><li>基本的训练过程<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-23-47.png" alt="基本训练过程"><br>当然变形的训练有好多种，他们的优势都各有千秋：<ol type="1"><li>Continues bug of word<br>之前是考虑上文，这里改成了考虑上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-30-04.png" alt="CBOW"></li><li>Skip-gram<br>用中间的Word来预测上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-32-26.png" alt="Skip-gram"></li></ol></li></ul></li></ul></li><li>应用<br>对于我们训练出来的词向量，还有很多有意思的操作。<ul><li>比如对两个词向量做减法，就能得到一些规律:<br><span class="math inline">\(V(hotter)-V(hot)\,\approx\,V(bigger)-V(big)\)</span><br><span class="math inline">\(V(Rome)-V(Italy)\,\approx\,V(Berlin)-V(Germany)\)</span><br><span class="math inline">\(V(king)-V(queen)\,\approx\,V(uncle)-V(aunt)\)</span><br>那么我们的机器就可以推测，罗马的意大利就和柏林的？？一样？ <span class="math inline">\(Compute\,V(Berlin)-V(Rome)+V(Italy)\)</span><br>之后就寻找最接近上述结果的词向量，就能找到答案<br></li><li>我们还可以做多语言的Word Embedding，中英文词汇翻译也可以做到<br><img src="/2019/08/30/Word-Embedding/2019-09-10-19-59-06.png" alt="Multi-lingual Embedding"><br>就像上面一样，我们可以学习一些对应关系，然后就可以进行翻译这种功能了。<br></li><li>除了对文字的Embedding，还可以对图像做<br><img src="/2019/08/30/Word-Embedding/2019-09-10-20-00-54.png" alt="Multi-domain Embedding"><br>这种方式可以用来做一些分类功能，因为传统的方法无法区分新增加的类别。这种方法即使没有这一类，至少也能区别出来不是已知的类别<br></li><li>我们甚至可以多document做Embedding，最简单的方法就是对文档做词袋，然后用auto-encoder。但是词袋无法考虑语言的顺序，会失去很多的信息。 下面是一些解决办法，需要深入研究可以直接去拜读。 <img src="/2019/08/30/Word-Embedding/2019-09-10-20-04-38.png" alt="Beyond Bag of Word"></li></ul></li></ol>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>核心问题：如何用一个vector表示单词？</p></blockquote><ol type="1"><li><p>1-of-N encoding<br>这是最简单的做法，相当于对所有的文字做了一个onehot编码，也就是用一个长度为N(N表示单词的个数)的向量来唯一的表示一个单词。</p><figure><img src="/2019/08/30/Word-Embedding/2019-08-30-20-33-07.png" alt="1-of-N encoding"><figcaption>1-of-N encoding</figcaption></figure><p>但是这种方法无法表达各个单词之间的关系，比如dog和cat都是动物，解决方法是给他们再做分类<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-36-19.png" alt="word class"></p><p>即使这样，这不能表达多个类别之间的关系。比如class1和class2之间其实是有关系的，因为动物是可以做跑跳的，显然这种硬分类也无法完全表达信息。</p></li><li><p>Word Embedding 把每一个Word都project到一个高维空间中去，这里的高维空间要比N低多得多。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-46-27.png" alt="word embedding"><br>上图中各个点的关系可以通过在高位空间中的距离或者其他的指标来表示，也可以根据不同的标准来分类。<br>产生这种向量是非监督学习，我们只知道输入不知道输出<br><img src="/2019/08/30/Word-Embedding/2019-08-30-20-49-54.png" alt="unsupervised"><br><strong>可以使用auto-encoder吗？</strong></p><pre><code> 显然是不可以的，输入的是onehot编码，其实是学不到什么东西的。  </code></pre></li><li>如何通过Word Embedding 来学习上下文信息?<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-07-42.png" alt="机器上下文学习"><br>虽然机器不懂得蔡英文和马英九，但是根据上下文是可以把蔡英文和马英九归并成一类的。<ul><li>Count based（Glove Vector）<br>如果单词X，Y经常在一块出现，V(X)和V(Y)就会很接近。<br>具体做法是让V(X)和V(Y)的内积接近于X和Y共同出现的次数<span class="math inline">\(N_{x,y}\)</span> <img src="/2019/08/30/Word-Embedding/2019-08-30-21-19-41.png" alt="Glove Vector"></li><li>Predition based<ul><li>这种方法对单词的表示仍然是onehot。该方法会训练一个NN，输入是一个onehot的单词编码，输出是一个概率向量，表示某个单词紧跟着该单词的可能性大小。<br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-26-26.png" alt="predict based1"><br><img src="/2019/08/30/Word-Embedding/2019-08-30-21-27-15.png" alt="predict based2"><br>具体说来，其实是将上图中训练好的网络的第一层向量（Z）取出来作为该词汇的特征向量。<br></li><li><strong>为什么这种方法会奏效呢？</strong><br>中间的隐藏层，需要把同类或者相近的词汇投射到相同的区间。只有这样才能降低最终的loss。这种方法当然自动的考虑了上下文关系。<br></li><li><strong>只用一个单词来预测下一个单词肯定是不太现实， 所以引入了Sharing Parameters的模型</strong><br>其实就是用前N个词汇来预测下一个词汇<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-02-47.png" alt="Sharing Parameters"><br>如上图，这里前N个单词的权重是共享的，对应的连接处是相同的。其原因一是为了计算方便，二是为了保证同一个单词在不同位置输入得到的特征向量是相同的(<em>比如，就职前面的蔡英文和马英九不应该因为顺序不同而得到大相径庭的结果</em>)。<br>上面的公式给了一个等价变换。要得到单词的embedding，在训练完之后，只需要乘以那个W即可得到对应的embeddding。<br>另外在实际训练的时候，为了保持W相同，应该做到：<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-14-15.png" alt="make qual"><br>这个想法十分的巧妙，对反向传播做了小小的改动。<br></li><li>基本的训练过程<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-23-47.png" alt="基本训练过程"><br>当然变形的训练有好多种，他们的优势都各有千秋：<ol type="1"><li>Continues bug of word<br>之前是考虑上文，这里改成了考虑上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-30-04.png" alt="CBOW"></li><li>Skip-gram<br>用中间的Word来预测上下文<br><img src="/2019/08/30/Word-Embedding/2019-09-02-16-32-26.png" alt="Skip-gram"></li></ol></li></ul></li></ul></li><li>应用<br>对于我们训练出来的词向量，还有很多有意思的操作。<ul><li>比如对两个词向量做减法，就能得到一些规律:<br><span class="math inline">\(V(hotter)-V(hot)\,\approx\,V(bigger)-V(big)\)</span><br><span class="math inline">\(V(Rome)-V(Italy)\,\approx\,V(Berlin)-V(Germany)\)</span><br><span class="math inline">\(V(king)-V(queen)\,\approx\,V(uncle)-V(aunt)\)</span><br>那么我们的机器就可以推测，罗马的意大利就和柏林的？？一样？ <span class="math inline">\(Compute\,V(Berlin)-V(Rome)+V(Italy)\)</span><br>之后就寻找最接近上述结果的词向量，就能找到答案<br></li><li>我们还可以做多语言的Word Embedding，中英文词汇翻译也可以做到<br><img src="/2019/08/30/Word-Embedding/2019-09-10-19-59-06.png" alt="Multi-lingual Embedding"><br>就像上面一样，我们可以学习一些对应关系，然后就可以进行翻译这种功能了。<br></li><li>除了对文字的Embedding，还可以对图像做<br><img src="/2019/08/30/Word-Embedding/2019-09-10-20-00-54.png" alt="Multi-domain Embedding"><br>这种方式可以用来做一些分类功能，因为传统的方法无法区分新增加的类别。这种方法即使没有这一类，至少也能区别出来不是已知的类别<br></li><li>我们甚至可以多document做Embedding，最简单的方法就是对文档做词袋，然后用auto-encoder。但是词袋无法考虑语言的顺序，会失去很多的信息。 下面是一些解决办法，需要深入研究可以直接去拜读。 <img src="/2019/08/30/Word-Embedding/2019-09-10-20-04-38.png" alt="Beyond Bag of Word"></li></ul></li></ol>]]></content>
     
     <summary type="html">
     
