@@ -103,7 +103,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/10/Neighbor-Embedding/2019-09-10-21-02-29.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/10/Neighbor-Embedding/2019-09-10-21-08-04.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/10/Neighbor-Embedding/2019-09-10-21-38-24.png">
-<meta property="og:updated_time" content="2019-09-10T13:39:44.823Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Neighbor-Embedding/2019-09-11-10-36-00.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Neighbor-Embedding/2019-09-11-10-39-04.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Neighbor-Embedding/2019-09-11-10-40-37.png">
+<meta property="og:updated_time" content="2019-09-11T07:26:02.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neighbor Embedding">
 <meta name="twitter:description" content="简单的说，Neighbor Embedding是一种降维方法，而且是无监督的，利用的是各个单词的临近关系  Manifold Learning(流形学习) 对于降维问题的思考在于，我们的降维在高维空间和低维空间看到的东西是不同的：  上图很容易看到，蓝色的点距离绿色的点更近、距离红色的点更远。但是如果我们只是简单的压扁，就会造成蓝色的点距离红色的点更近的错觉，这就是降维导致的信息丢失。 我们流形">
@@ -406,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  260
+                  362
                 </span>
               
 
@@ -456,7 +459,14 @@
 <li>Locally Linear Embedding(LLE)<br>
 这种算法的思路是保持数据中任意一个元素和其临近的K个元素的关系<span class="math inline">\(w_{i,j}\)</span>保持不变: <span class="math inline">\(Find\, a\,set\,of\,w_{i,j}\,minimizing\\\sum_{i}\|x^i\,-\,\sum_{j}w_{i,j}x^j\|_2\)</span><br>
 Then find the dimension reduction results <span class="math inline">\(z^i\)</span> and <span class="math inline">\(z^j\)</span> based on <span class="math inline">\(w_{i,j}\)</span>:<br>
-<img src="/2019/09/10/Neighbor-Embedding/2019-09-10-21-38-24.png" alt="LLE"></li>
+<img src="/2019/09/10/Neighbor-Embedding/2019-09-10-21-38-24.png" alt="LLE"> 降维后的新元素<span class="math inline">\(z^i\)</span>和<span class="math inline">\(z^j\)</span>之间，也应该保持上述高维空间的关系，即<span class="math inline">\(w_{i,j}\)</span>保持不变:<br>
+<img src="/2019/09/10/Neighbor-Embedding/2019-09-11-10-36-00.png" alt="LLE-2"><br>
+这种关系就和《长恨歌》中的一句诗句类似:<br>
+<img src="/2019/09/10/Neighbor-Embedding/2019-09-11-10-39-04.png" alt="长恨歌"><br>
+LLE中，K的选择是一个关键要素：K选的少了高维的关系可能无法维系；K选的多了算法的复杂性很大，效果也不好：<br>
+<img src="/2019/09/10/Neighbor-Embedding/2019-09-11-10-40-37.png" alt="系数K对结果的影响"><br>
+</li>
+<li>Laplacian Eigenmaps</li>
 </ol>
 
       
@@ -512,6 +522,10 @@ Then find the dimension reduction results <span class="math inline">\(z^i\)</spa
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/04/树结构/" rel="prev" title="树结构">
+                树结构 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -593,7 +607,7 @@ Then find the dimension reduction results <span class="math inline">\(z^i\)</spa
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -604,7 +618,7 @@ Then find the dimension reduction results <span class="math inline">\(z^i\)</spa
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -615,7 +629,7 @@ Then find the dimension reduction results <span class="math inline">\(z^i\)</spa
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -704,7 +718,7 @@ Then find the dimension reduction results <span class="math inline">\(z^i\)</spa
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
