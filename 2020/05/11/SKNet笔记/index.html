@@ -92,13 +92,13 @@
 
 
 
-<meta name="description" content="SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经再看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。   Abstract 再经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统再观察的时候感受野明显不相同(在观察远处物体时明显感受野会增">
+<meta name="description" content="SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经在看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。   Abstract 在经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统在观察的时候感受野明显不相同(在观察远处物体时明显感受野会增">
 <meta name="keywords" content="DeepLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SKNet笔记">
 <meta property="og:url" content="http://yoursite.com/2020/05/11/SKNet笔记/index.html">
 <meta property="og:site_name" content="残桥断雪的博客">
-<meta property="og:description" content="SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经再看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。   Abstract 再经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统再观察的时候感受野明显不相同(在观察远处物体时明显感受野会增">
+<meta property="og:description" content="SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经在看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。   Abstract 在经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统在观察的时候感受野明显不相同(在观察远处物体时明显感受野会增">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/SKNet笔记/2020-05-12-11-02-06.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/SKNet笔记/2020-05-12-17-54-56.png">
@@ -111,10 +111,10 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/11/SKNet笔记/2020-05-12-20-55-52.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/SKNet笔记/2020-05-12-21-06-31.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/11/SKNet笔记/2020-05-12-21-09-52.png">
-<meta property="og:updated_time" content="2020-05-12T13:13:20.680Z">
+<meta property="og:updated_time" content="2020-05-12T13:28:02.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SKNet笔记">
-<meta name="twitter:description" content="SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经再看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。   Abstract 再经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统再观察的时候感受野明显不相同(在观察远处物体时明显感受野会增">
+<meta name="twitter:description" content="SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经在看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。   Abstract 在经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统在观察的时候感受野明显不相同(在观察远处物体时明显感受野会增">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/11/SKNet笔记/2020-05-12-11-02-06.png">
 
 
@@ -452,14 +452,14 @@
 
       
         <blockquote>
-<p>SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经再看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。</p>
+<p>SKNet(Selective Kernel Convolution)是ResNext后时代的产物，它和SENET是一对兄弟，其灵感来源于我们的视觉神经在看物体时会有不同的感受野。SKNet在实际的数据中表现的也很好。</p>
 </blockquote>
 <ol start="0" type="1">
 <li>Abstract<br>
-再经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统再观察的时候感受野明显不相同(在观察远处物体时明显感受野会增加)，作者根据这一灵感提出了SKNet----不同分支有不同的感受野，并且增加了对这些分支的Attention操作，让网络自己学习选那一种感受野。<br>
+在经典的ResNext系列网络中，卷积神经网络的感受野是相同的。但是众所周知，我们人类的视觉系统在观察的时候感受野明显不相同(在观察远处物体时明显感受野会增加)，作者根据这一灵感提出了SKNet----不同分支有不同的感受野，并且增加了对这些分支的Attention操作，让网络自己学习选哪一种感受野。<br>
 </li>
 <li>Introduction<br>
-在对猫视觉的研究中，猫的视觉神经再对同一物体的感受野是不同的，这可以使得猫搜集到多尺寸的信息，对于这一特性最经典的应用就是InceptionNets，它通过融合3×3、5×5、7×7三种不同的卷积核来提升网络的效果。<br>
+在对猫视觉的研究中，猫的视觉神经在对同一物体的感受野是不同的，这可以使得猫搜集到多尺寸的信息，对于这一特性最经典的应用就是InceptionNets，它通过融合3×3、5×5、7×7三种不同的卷积核来提升网络的效果。<br>
 在刚开始对神经视觉的实验中，科学家一度认为猫看木棍时有一个固定的感受野，称为CRF(Classic )。后来很多科学家发现，在猫盯着棍子的时候，如果你在其注意力外放一个物体猫的视觉神经仍有反应，这被称为NCRF(Non-classic)。并且，如果持续的刺激NCRF一段时间，猫的CRF也会发生改变。也就是说猫的视觉神经感受野是有自动调节功能的。可惜的是只有InceptionNets系列利用了这一网络，但是它仍然是固定了三种不同的视野，并且只采用了简单地线性相加，这种线性相加很有可能会削弱视觉上的动态调整特性。<br>
 基于上面几点，作者提出了SKNet，该网络拥有自适应感受野。由Split、Fuse、Select三部分组成。<br>
 SKNet具有如下优点：
@@ -527,7 +527,7 @@ SENet可以插入到其他的网络结构中( MobileNet, Shuf- fleNet)，这里�
 <img src="/2020/05/11/SKNet笔记/2020-05-12-18-23-08.png" alt="不同参数量对应的error"></li>
 </ul></li>
 <li>5.2 CIFAR 分类任务<br>
-为了衡量网络再轻量数据上的表现，使用CIFAR 100分类和10分类数据来衡量网络的性能 <img src="/2020/05/11/SKNet笔记/2020-05-12-18-24-29.png" alt="轻量数据集分类"></li>
+为了衡量网络在轻量数据上的表现，使用CIFAR 100分类和10分类数据来衡量网络的性能 <img src="/2020/05/11/SKNet笔记/2020-05-12-18-24-29.png" alt="轻量数据集分类"></li>
 <li>5.3 Ablation Studies<br>
 这部分研究主要是为了证明SKNet可以自适应的调整RF，仍然使用ImageNet为基本数据集。
 <ul>
@@ -1433,7 +1433,7 @@ SKNet从神经学中的可调节感受野出发，通过Attention设计了一套
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
   
 
@@ -1445,5 +1445,5 @@ SKNet从神经学中的可调节感受野出发，通过Attention设计了一套
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"letf","width":100,"height":350},"mobile":{"show":false},"log":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"letf","width":100,"height":350},"mobile":{"show":false},"log":false});</script></body>
 </html>
