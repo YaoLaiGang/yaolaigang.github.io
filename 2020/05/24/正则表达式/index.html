@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="正则表达式是编程中常用的技术手段，普通的字符串操作会使得程序难以复用，而使用正则表达式会极大的提高复用率。   匹配符 要用字符来匹配字符，定义一些基本的的匹配符是不可避免的：  ***可以匹配一个数字，***可以匹配一个字母或者数字，*** 表示匹配空格或者Tab等空白符 . 可以匹配任意字符  对于变长匹配，* 表示任意个字符（包括0），+ 表示最少一个字符，? 表示0或者1个字符，{n}">
+<meta name="description" content="正则表达式是编程中常用的技术手段，普通的字符串操作会使得程序难以复用，而使用正则表达式会极大的提高复用率。   匹配符 要用字符来匹配字符，定义一些基本的的匹配符是不可避免的：  \d可以匹配一个数字，\w可以匹配一个字母或者数字，\s 表示匹配空格或者Tab等空白符 . 可以匹配任意字符  对于变长匹配，* 表示任意个字符（包括0），+ 表示最少一个字符，? 表示0或者1个字符，{n} 表示匹">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
 <meta property="og:url" content="http://yoursite.com/2020/05/24/正则表达式/index.html">
 <meta property="og:site_name" content="残桥断雪的博客">
-<meta property="og:description" content="正则表达式是编程中常用的技术手段，普通的字符串操作会使得程序难以复用，而使用正则表达式会极大的提高复用率。   匹配符 要用字符来匹配字符，定义一些基本的的匹配符是不可避免的：  ***可以匹配一个数字，***可以匹配一个字母或者数字，*** 表示匹配空格或者Tab等空白符 . 可以匹配任意字符  对于变长匹配，* 表示任意个字符（包括0），+ 表示最少一个字符，? 表示0或者1个字符，{n}">
+<meta property="og:description" content="正则表达式是编程中常用的技术手段，普通的字符串操作会使得程序难以复用，而使用正则表达式会极大的提高复用率。   匹配符 要用字符来匹配字符，定义一些基本的的匹配符是不可避免的：  \d可以匹配一个数字，\w可以匹配一个字母或者数字，\s 表示匹配空格或者Tab等空白符 . 可以匹配任意字符  对于变长匹配，* 表示任意个字符（包括0），+ 表示最少一个字符，? 表示0或者1个字符，{n} 表示匹">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-24T05:37:56.602Z">
+<meta property="og:updated_time" content="2020-05-25T09:30:07.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="正则表达式是编程中常用的技术手段，普通的字符串操作会使得程序难以复用，而使用正则表达式会极大的提高复用率。   匹配符 要用字符来匹配字符，定义一些基本的的匹配符是不可避免的：  ***可以匹配一个数字，***可以匹配一个字母或者数字，*** 表示匹配空格或者Tab等空白符 . 可以匹配任意字符  对于变长匹配，* 表示任意个字符（包括0），+ 表示最少一个字符，? 表示0或者1个字符，{n}">
+<meta name="twitter:description" content="正则表达式是编程中常用的技术手段，普通的字符串操作会使得程序难以复用，而使用正则表达式会极大的提高复用率。   匹配符 要用字符来匹配字符，定义一些基本的的匹配符是不可避免的：  \d可以匹配一个数字，\w可以匹配一个字母或者数字，\s 表示匹配空格或者Tab等空白符 . 可以匹配任意字符  对于变长匹配，* 表示任意个字符（包括0），+ 表示最少一个字符，? 表示0或者1个字符，{n} 表示匹">
 
 
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  492
+                  509
                 </span>
               
 
@@ -429,16 +429,19 @@
 <li>匹配符<br>
 要用字符来匹配字符，定义一些基本的的匹配符是不可避免的：
 <ul>
-<li>***可以匹配一个数字，***可以匹配一个字母或者数字，*** 表示匹配空格或者Tab等空白符</li>
+<li><strong>\d</strong>可以匹配一个数字，<strong>\w</strong>可以匹配一个字母或者数字，<strong>\s</strong> 表示匹配空格或者Tab等空白符</li>
 <li><strong>.</strong> 可以匹配任意字符<br>
 </li>
-<li>对于变长匹配，<strong>*</strong> 表示任意个字符（包括0），<strong>+</strong> 表示最少一个字符，<strong>?</strong> 表示0或者1个字符，<strong>{n}</strong> 表示匹配n个字符，<strong>{n,m}</strong> 表示匹配n-m个字符<br>
-&gt; 例题1. 请分析下 <strong>+</strong> 所表示的含义？ <em>解：</em><br>
-表示三个数字<br>
-+ 表示最少一个空格<br>
-表示3-8位的数字<br>
-<em>答：</em> 这个正则表达式表示的是一个用空格隔开的电话号码。</li>
-</ul></li>
+<li>对于变长匹配，<strong>*</strong> 表示任意个字符（包括0），<strong>+</strong> 表示最少一个字符，<strong>?</strong> 表示0或者1个字符，<strong>{n}</strong> 表示匹配n个字符，<strong>{n,m}</strong> 表示匹配n-m个字符</li>
+</ul>
+<blockquote>
+<p>例题1. 请分析下 <strong>\d{3}\s+\d{3,8}</strong> 所表示的含义？<br>
+<em>解：</em><br>
+\d{3}表示三个数字<br>
+\s+ 表示最少一个空格<br>
+\d{3,8}表示3-8位的数字<br>
+<em>答：</em> 这个正则表达式表示的是一个用空格隔开的电话号码。</p>
+</blockquote></li>
 <li>精确匹配<br>
 上述匹配符有一个致命的问题，比如如果我想匹配一个用空格或者 <strong>-</strong> 分开的电话号码？似乎难以解决这个问题，如果写两个正则表达式十分不优雅，所以我们又引入了以下几个操作符：
 <ul>
@@ -448,16 +451,16 @@
 <li><strong>^</strong> 表示行的开头，如 **^* 表示以数字开头</li>
 <li><strong>$</strong> 表示行的结尾，如 <strong>$</strong> 表示以数字结尾</li>
 </ul></li>
-<li>注意事项<br>
-正则表达式使用的是贪婪匹配，也就是尽可能多的匹配尽量多的字符</li>
-</ol>
+<li><p>注意事项<br>
+正则表达式使用的是贪婪匹配，也就是尽可能多的匹配尽量多的字符</p>
 <blockquote>
 <p>例题2. 请写出下面程序的结果：<br>
-re.match(r'^(+?)(0<em>)$', '102300').groups() 答：('102300', '')<br>
+re.match(r'^(\d+?)(0<em>)$', '102300').groups() 答：('102300', '')<br>
 例题3：请写出匹配102300最后一个0的正则表达式？<br>
-答：^(+?)0</em>$</p>
-</blockquote>
-<p>也就是说，对于 <strong>+</strong> 这种贪婪匹配，加上 <strong>?</strong> 就会变成非贪婪匹配（尽可能少匹配）</p>
+答：^(\d+?)0</em>$</p>
+</blockquote></li>
+</ol>
+<p>也就是说，对于 <strong>\d+</strong> 这种贪婪匹配，加上 <strong>?</strong> 就会变成非贪婪匹配（尽可能少匹配）</p>
 
       
     </div>
@@ -1372,26 +1375,6 @@ re.match(r'^(+?)(0<em>)$', '102300').groups() 答：('102300', '')<br>
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
