@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="machine learning,">
+  <meta name="keywords" content="DeepLearning,">
 
 
 
@@ -92,18 +92,33 @@
 
 
 
-<meta name="description" content="1.基本数值特征  对于刚拿到的数据，先进行缺失值处理 对于离散值，我们常用 LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类 对于二值特征:Sklearn中的二值化类是Binarizer，当然Pandas直接判断也很方便 对于多项式特征:也就是多个特征指标的组合(一般支持向量机用">
-<meta name="keywords" content="machine learning">
+<meta name="description" content="区域感知动态卷积论文笔记  论文地址:https://arxiv.org/pdf/2003.12243.pdf 该论文提出了DRConv。传统的卷积结构由于权值共享，所以只有通过增加网络宽度和深度来增加网络捕获的图像特征，这种方法会浪费大量的算力。本论文提出的DRConv构造出了一个“智能通道过滤器”，且该过滤器即实现了类似local conv 1的不同像素不同权重的效果，又保证了网络存在平移不变">
+<meta name="keywords" content="DeepLearning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="特征工程">
-<meta property="og:url" content="http://yoursite.com/2019/09/04/特征工程/index.html">
+<meta property="og:title" content="Dynamic Region-Aware Convolution详解">
+<meta property="og:url" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/index.html">
 <meta property="og:site_name" content="残桥断雪的博客">
-<meta property="og:description" content="1.基本数值特征  对于刚拿到的数据，先进行缺失值处理 对于离散值，我们常用 LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类 对于二值特征:Sklearn中的二值化类是Binarizer，当然Pandas直接判断也很方便 对于多项式特征:也就是多个特征指标的组合(一般支持向量机用">
+<meta property="og:description" content="区域感知动态卷积论文笔记  论文地址:https://arxiv.org/pdf/2003.12243.pdf 该论文提出了DRConv。传统的卷积结构由于权值共享，所以只有通过增加网络宽度和深度来增加网络捕获的图像特征，这种方法会浪费大量的算力。本论文提出的DRConv构造出了一个“智能通道过滤器”，且该过滤器即实现了类似local conv 1的不同像素不同权重的效果，又保证了网络存在平移不变">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-08T07:46:16.653Z">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-17-25-41.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-21-24-24.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-21-27-14.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-22-10-03.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-19-22-20.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-22-49.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-12-47.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-34-46.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-36-12.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-38-14.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-40-38.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-42-36.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-44-45.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-49-24.png">
+<meta property="og:updated_time" content="2020-08-04T13:50:39.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="特征工程">
-<meta name="twitter:description" content="1.基本数值特征  对于刚拿到的数据，先进行缺失值处理 对于离散值，我们常用 LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的get_dummies()方法，当然sklearn 也有对应的类 对于二值特征:Sklearn中的二值化类是Binarizer，当然Pandas直接判断也很方便 对于多项式特征:也就是多个特征指标的组合(一般支持向量机用">
+<meta name="twitter:title" content="Dynamic Region-Aware Convolution详解">
+<meta name="twitter:description" content="区域感知动态卷积论文笔记  论文地址:https://arxiv.org/pdf/2003.12243.pdf 该论文提出了DRConv。传统的卷积结构由于权值共享，所以只有通过增加网络宽度和深度来增加网络捕获的图像特征，这种方法会浪费大量的算力。本论文提出的DRConv构造出了一个“智能通道过滤器”，且该过滤器即实现了类似local conv 1的不同像素不同权重的效果，又保证了网络存在平移不变">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-17-25-41.png">
 
 
 
@@ -133,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/04/特征工程/">
+  <link rel="canonical" href="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/">
 
 
 
 
 
-  <title>特征工程 | 残桥断雪的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Dynamic Region-Aware Convolution详解 | 残桥断雪的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -308,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/特征工程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="laigang">
@@ -325,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">特征工程</h1>
+          <h1 class="post-title" itemprop="name headline">Dynamic Region-Aware Convolution详解</h1>
         
 
         <div class="post-meta">
@@ -337,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-04T15:41:56+08:00">
-                2019-09-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-03T09:59:31+08:00">
+                2020-08-03
               </time>
             
 
@@ -360,8 +375,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/feature-engineering/" itemprop="url" rel="index">
-                    <span itemprop="name">feature engineering</span>
+                  <a href="/categories/CV/" itemprop="url" rel="index">
+                    <span itemprop="name">CV</span>
                   </a>
                 </span>
 
@@ -377,7 +392,7 @@
 
           
           
-             <span id="/2019/09/04/特征工程/" class="leancloud_visitors" data-flag-title="特征工程">
+             <span id="/2020/08/03/Dynamic-Region-Aware-Convolution详解/" class="leancloud_visitors" data-flag-title="Dynamic Region-Aware Convolution详解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +422,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  2.4k
                 </span>
               
 
@@ -423,7 +438,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  9
                 </span>
               
             </div>
@@ -444,62 +459,117 @@
       
 
       
-        <h3 id="基本数值特征">1.基本数值特征</h3>
-<ul>
-<li><p>对于刚拿到的数据，先进行缺失值处理</p></li>
-<li><p>对于离散值，我们常用 LabelEncoder OneHotEncoder来对其进行编码以方便识别。常用的为pandas中的<strong>get_dummies()</strong>方法，当然sklearn 也有对应的类</p></li>
-<li><p>对于二值特征:Sklearn中的二值化类是<strong>Binarizer</strong>，当然Pandas直接判断也很方便</p></li>
-<li><p>对于多项式特征:也就是多个特征指标的组合(一般支持向量机用的比较多，乘积、平方等等)，使用<strong>PolynomialFeatures</strong>来实现。</p></li>
-<li><p>对于binning(连续)特征:可以做离散化，划分区间分成几个类(比如年龄)，可以直接写<strong>map()</strong>函数映射。比较常用的方法,可以直接试一试，效果不好说。</p></li>
-<li><p>分位数切分: 四分位，二分位，四分之三分位等切分成离散的方式，常用pandans的<strong>quantile()</strong>方法，然后用<strong>qcut()</strong>的方法进行切分</p></li>
-<li><p>对数变换(COX-BOX): 对于分布是正态分布假设的算法(可以用偏度来判定)，数据本身可能偏度很大，而做了对数变换有可能使得其更接近对数变换。使用numpy.log()即可。COX-BOX是另一种更复杂的对数变换，其目的也是让数据近似于正态分布。</p></li>
-</ul>
-<h3 id="日期特征处理">2.日期特征处理</h3>
-<p>一般的日期转化为dataTime格式，可以直接把年月日拿出来用的数据(apply)。提取出年月日之后可以当成特征，也可以二次加工。比如四季、早晚、前半年、后半年等等。 整体的思路是:前期多提特征，后期再筛选。</p>
-<h3 id="文本特征处理">3.文本特征处理</h3>
-<p>文本特征的难度是如何让计算机认识这些文字，文字本身对于计算机来说很难提取出特征<br>
-可以使用<strong>nltk</strong>工具包进行预处理，具体使用应该专门学习<br>
-关于语句的编码，常用的有<em>词袋模型</em>(对输入的词进行编码，句子中出现的词表示为1，未出现的词表示为0，其实就是词汇分布表，并包含有词频，sklearn中有对应的<strong>CountVectorizer</strong>)</p>
-<h3 id="时间序列的特征挖掘">4.时间序列的特征挖掘</h3>
+        <h2 id="区域感知动态卷积论文笔记">区域感知动态卷积论文笔记</h2>
+<blockquote>
+<p>论文地址:<a href="https://arxiv.org/pdf/2003.12243.pdf" class="uri" target="_blank" rel="noopener">https://arxiv.org/pdf/2003.12243.pdf</a> 该论文提出了DRConv。传统的卷积结构由于权值共享，所以只有通过增加网络宽度和深度来增加网络捕获的图像特征，这种方法会浪费大量的算力。本论文提出的DRConv构造出了一个“智能通道过滤器”，且该过滤器即实现了类似local conv <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>的不同像素不同权重的效果，又保证了网络存在平移不变性，同时整个网络的复杂度并没有提升，同时该网络在几大任务图像任务 <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>中的表现都好于传统网络 <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>。</p>
+</blockquote>
+<h3 id="introduction">Introduction</h3>
+<p>由于现在主流的卷积神经网络都是权值共享的，所以每一层能够抽取的信息是有限的，如果想要增加抽取的信息，只能通过增加网络的宽度 <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>和深度 <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>来实现。<br>
+这种传统的方式有很多的取点，比如：</p>
 <ol type="1">
-<li><p>统计特征 : 最大值(max)，最小值(min)，均值(mean)，中位数(median)，方差(variance)，标准差(standard variance)，偏度(skewness)，峰度(kurtosis)<br>
-关于偏度和峰度，它们是如下两个公式：</p>
-<p><span class="math display">\[\mu\,=\,\frac{1}{T}\sum_{i=1}^{T}x_i\]</span> <span class="math display">\[\sigma^{2}\,=\,\sum_{i=1}^{T}\frac{1}{T}(x_i - \mu)^{2}\]</span> <span class="math display">\[skewness(X)\,=\,E[(\frac{X\,-\,\mu}{\sigma})^{3}]\,=\,\frac{1}{T}\,\sum_{i=1}^{T}\frac{(x_i\,-\,\mu)^3}{\sigma^{3}}\]</span> <span class="math display">\[kurtosis(X)\,=\,E[(\frac{X\,-\,\mu}{\mu})^4]\,=\,\frac{1}{T}\,\sum_{i=1}^{T}\frac{(x_i\,-\,\mu)^4}{\sigma^4}\]</span></p></li>
-<li>熵特征<br>
-熵是衡量数据确定性和不确定性的指标，在相同的方差、均值和中位数的情况下，entropy越大，系统就越混乱。<br>
-entropy公式如下:<br>
-<span class="math inline">\(entropy(X)\,=\,-\sum_{i=1}^{\infty}\,P\{x\,=\,x_i\}\,ln(P\{x\,=\,x_i\})\)</span><br>
-上面是信息论中基本的熵公式，下面介绍几个在时间序列中运用的熵:
-<ul>
-<li>2.1 Binned Entropy<br>
-这种做法是把时间序列进行分桶的操作，计算每个桶内的熵，以此来衡量时间序列的集中程度<br>
-如果一个时间序列的 Binned Entropy 较大，说明这一段时间序列的取值是较为均匀的分布在<span class="math inline">\(\,min(X_T), max(X_T)\,\)</span>之间。如果取值较小，说明其取值是集中在某一段上的. <span class="math inline">\(binned entropy\,=\,-\sum_{k=0}^{min(maxbin,len(X))}\;p_k\,ln(p_k)\,\cdot\,1_{p_k&gt;0}\)</span></li>
-<li>2.2 Approximate Entropy<br>
-这个指标可判断这个时间序列是具备某种趋势还是随机出现。AE这种方法是将一位空间中的时间序列提升到高维空间中，通过高维空间中向量的距离或者相似度来判断一维空间中是否存在某种趋势。算法大致如下:
-<ul>
-<li>step1: 给定两个参数m,r .其中m表示取多长的子片段分析，r表示投射到高位时两向量是否相近的阈值。需要构造的m维向量如下:<br>
-<span class="math inline">\(X_1(m)\,=\,(x_1,\cdots,x_m)\in\mathbb{R},\)</span><br>
-<span class="math inline">\(X_i(m)\,=\,(x_i,\cdots,x_{m+i-1})\in\mathbb{R},\)</span><br>
-<span class="math inline">\(X_{N-m+1}(m)\,=\,(x_{N-m+1},\cdots,x_N)\in\mathbb{R}.\)</span><br>
-</li>
-<li>step2: 通过上述m维向量可以计算出哪些向量和<span class="math inline">\(X_i(m)\)</span>相似: <span class="math inline">\(C_i^m(r)\,=\,(number\,of\,X_j(m)\,such\,that\,d(X_i(m),X_j(m)\,\leq\,r)/(N-m+1))\)</span><br>
-在这里，d可以选取<span class="math inline">\(L^1,L^2,L^P,L^\infty\)</span>范数，这里常用<span class="math inline">\(L^\infty\)</span>范数.</li>
-<li>step3: 考虑函数:<br>
-<span class="math inline">\(\Phi^m(r)\,=\,(N-m+1)^-1\:.\sum_{i=1}^{N-m+1}ln(C_i^m(r))\)</span><br>
-</li>
-<li>step4: Approximate Entropy可定义为:<br>
-<span class="math inline">\(ApEn(m,r)\,=\,\Phi^m(r)-\Phi^{m+1}(r)\)</span></li>
-<li>remark:
-<ol type="1">
-<li>m一般取值2或者3，r&gt;0, r需要根据具体的时间序列进行调整<br>
-</li>
-<li>如果某个时间序列有许多很相似或者重复的时间序列，那么他的Approximate Entropy就相对较小，反之就相对较大。</li>
-</ol></li>
-</ul></li>
-<li>2.3. Sample Entropy<br>
-测试</li>
-</ul></li>
+<li>计算量大，计算效率低</li>
+<li>这会造成优化困难，网络调试变得十分复杂</li>
 </ol>
+<p>为了解决这一问题，一些学者提出了<strong>local conv</strong> <a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> <a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> 这种对每个像素都有不同权重的做法虽然取得了不错的效果，计算复杂度也没有显著的增加，但是它仍然有两个致命的缺点：</p>
+<ol type="1">
+<li>由于取消了权重共享，导致整个网络的参数量非常大，占用空间也很高。</li>
+<li>由于失去了平移不变性，这使得该网络不能做分类任务。</li>
+</ol>
+<p>除此之外，对于不同的样本local conv仍然共享滤波器，这使得该网络对特殊的样本样本不敏感 <a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>。</p>
+<p>为了克服上面的问题，作者提出了DRConv，其执行过程如下： <img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-17-25-41.png" alt="DRConv"><br>
+首先，通过标准卷积生成<strong>guided feature</strong>，根据guided feature将整个图像分成多个区域，卷积核生成模块<span class="math inline">\(G(X)\)</span>根据输入图片动态生成每个区域对应的卷积核，且在每个区域的卷积核是权重共享的，保证了平移不变性。<br>
+DRConv可以根据不同的区域匹配不同的卷积核，由于卷积核是动态生成的，所以它要比local conv参数少很多，同时其计算复杂度和标准卷积基本一致。<br>
+为了验证效果，本文对比了当前效果较好的网络结构，并对卷积常见的任务都做了对比。</p>
+<h3 id="related-work">Related Work</h3>
+<h4 id="spatial-related-convolution">Spatial Related Convolution</h4>
+<p>最早的空间相关的卷积网络是<strong>local conv</strong>，思路很简单，对于每个像素，均使用独立的非共享的滤波器。这种网络对于不同的区域有不同的特征分布的时候(如人脸识别)有很大的应用空间，比较典型的代表就是<strong>DeepeFace</strong>和<strong>DeepID</strong>系列网络<br>
+在目标检测方面，<strong>R-FCN</strong>使用基于区域的全卷积去提取局部表征。<br>
+除了上面的两个卷积网络结构外，一些模型则通过改变空间特征来更好地模拟语义变化，<strong>STNet</strong>(Spatial Transform Networks)可以通过学习来转动特征图，但是它非常难训练。<strong>ACU</strong>(active convolution unit)没有固定的卷积单元形状，它的形状(偏移量)是在训练中改变的。 <img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-21-24-24.png" alt="ACU"> <strong>Deformable Convolutional Network</strong> 进一步使得相对位移更加动态 <img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-21-27-14.png" alt="DCN"></p>
+<h4 id="dynamic-mechanism">Dynamic Mechanism</h4>
+<p>由于网络对数据的依赖性很强，动态机制也应运而生，首先是<strong>SKNet</strong> ， 该网络通过抽取不同感受野的特征提升了网络的精度。使用Attention机制的<strong>SENet</strong> 则通过动态给各个通道加权来提升网络的精度。<br>
+在动态权重方面，<strong>CondConv</strong> 通过对多个权重进行动态的线性组合来获取最终的权重。<br>
+对于不同的样本调整特殊的卷积核也是动态机制的运用，<strong>Deformable Kernels</strong> 通过学习卷积核的偏移来对原卷积进行重采样，而不改变输入数据。<br>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-03-22-10-03.png" alt="DK"><br>
+<strong>NonLocal</strong> 通过计算每个像素点和整体像素点的关系来实现完整的感受野操作。</p>
+<h3 id="dynamic-region-aware-convolution">Dynamic Region-Aware Convolution</h3>
+<p>首先为了对比，先看一下标准卷积的公式:<br>
+<span class="math display">\[Y_{u,v,o}=\sum_{c=1}^C X_{u,v.c} \ast W_c^{(o)} \qquad (u,v) \in S\]</span><br>
+对于标准卷积，定义输入<span class="math inline">\(X\in \mathbb{R}^{U \times V \times C}\)</span>，空间维度<span class="math inline">\(S \in \mathbb{R}^{U \times V}\)</span>，输出<span class="math inline">\(Y \in \mathbb{R}^{U \times V \times O}\)</span>，权重<span class="math inline">\(W \in \mathbb{R}^C\)</span>，输出的第o个channel的计算如上，<span class="math inline">\(\ast\)</span>为二维卷积操作。<br>
+为了方便理解，附上一张卷积的计算过程图：<br>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-19-22-20.png" alt="卷积计算图"><br>
+然后我们再看看local conv的计算：<br>
+<span class="math display">\[Y_{u,v,o}=\sum_{c=1}^C X_{u,v.c} \ast W_{u,v,c}^{(o)} \qquad (u,v) \in S\]</span><br>
+这里我们定义非共享权重为<span class="math inline">\(W \in \mathbb{R}^{U \times V \times C}\)</span>，输出的第o个channel公式如上，其中<span class="math inline">\(W_{u,v,c}^{(o)}\)</span>表示位置<span class="math inline">\((u,v)\)</span>上的独立非共享卷积核，即卷积在特征图上移动时，每次更换不同的卷积核。<br>
+最后我们看一下guided mask的计算公式：<br>
+<span class="math display">\[Y_{u,v,g}=\sum_{c=1}^C X_{u,v.c} \ast W_{t,c}^{(o)} \qquad (u,v) \in S_t\]</span><br>
+结合以上公式，定义guided mask<span class="math inline">\(M=S_0, \cdots , S_{m-1}\)</span>用来表示空间维度划分的<span class="math inline">\(m\)</span>个区域，<span class="math inline">\(M\)</span>根据输入图片的特征进行提取，每个区域<span class="math inline">\(S_t (t \in [0, m-1])\)</span>仅使用一个共享的卷积核。定义卷积核集<span class="math inline">\(W = [W_0 , \cdots , W_{m-1}]\)</span>，卷积核<span class="math inline">\(W_t \in \mathbb{R}^C\)</span>对应于区域<span class="math inline">\(S_t\)</span>。输出的每个channel的计算如上，即卷积在特征图上移动时，每次根据guided mask更换对应的卷积核。</p>
+<h3 id="learnable-guided-mask">Learnable guided mask</h3>
+<p>guided mask决定了卷积核在空间维度上的分布情况，其重要性可想而知，为了能适应不同的样本，该模块必须设计成可以通过损失函数进行反向传递而进行优化。下面讨论一下如何对该模块进行反向传递。<br>
+首先，guided mask 上的值的计算公式如下：<br>
+<span class="math display">\[M_{u,v}=argmax(F_{u,v}^0 , F_{u,v}^1 , \cdots , F_{u,v}^{m-1})\]</span><br>
+其中，F我们称之为guided feature，M为guided mask，上面的公式表示M上每个位置<span class="math inline">\((u,v)\)</span>的计算公式，<span class="math inline">\(F_{u,v}\)</span>表示位置<span class="math inline">\((u,v)\)</span>上的guided feature向量，其实上面的公式就是指示M个feature map中位置<span class="math inline">\((u,v)\)</span>上的最大值的下标。<br>
+这里有一个问题，就是argmax函数不可导，无法获得梯度，这样就没办法做反向传播，为了解决这一问题，作者用softmax来近似的替代argmax。</p>
+<h4 id="forward-propagation">forward propagation</h4>
+<p>guided mask的前向传播比较简单：<br>
+<span class="math display">\[\hat{W_{u,v}}=W_{M_{u,v}} \qquad M_{u,v} \in [0, m-1]\]</span><br>
+<span class="math inline">\(M_{u,v}\)</span>表示guided feature在<span class="math inline">\((u,v)\)</span>位置上的最大下标，<span class="math inline">\(W_{M_{u,v}}\)</span>是m个卷积核集中的一个。</p>
+<h4 id="back-propagation">back propagation</h4>
+<p>这里我们使用softmax来代替之前的one hot 编码，以方便进行反向传播：<br>
+<span class="math display">\[\hat{F_{u,v}^j} = \frac{e^{F_{u,v}^j }}{\sum_{n=0}^{m-1}e^{F_{u,v}^{n}}} \qquad j \in [0, m-1]\]</span><br>
+定义<span class="math inline">\(\hat{F}\)</span>来代替guided mask中的one hot表示，如上，在channel维度上做了softmax，以期望<span class="math inline">\(\hat{F_{u,v}^j}\)</span>近似的接近0和1。<br>
+由于对onehot无法求导，我们对上述公式进行反向传播:<br>
+<span class="math display">\[\nabla_{F_{u,v}}  \pounds = \hat{F_{u,v}} \odot ( \nabla_{\hat{F_{u,v}}} \pounds - 1&lt;\hat{F_{u,v}} , ( \nabla_{\hat{F_{u,v}}} \pounds&gt;)\]</span><br>
+这个公式看起来有些复杂，其实本质就是softmax反向求导公式，首先softmax的导函数为<span class="math inline">\(y(1-y)\)</span>。上面公式中，<span class="math inline">\(\nabla_{\hat{F_{u,v}}} \pounds\)</span> 表示loss对<span class="math inline">\(\hat{F}\)</span>求导，我们提出这一个公因子就会发现其本质就是softmax求导再乘于loss对<span class="math inline">\(\hat{F}\)</span>求导。这也正是反向传播的规律。</p>
+<p><img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-22-49.png" alt="正向传播和反向传播"><br>
+上图中的反向求导公式就是前向传播中公式的反向传播</p>
+<h4 id="filter-generator-module">Filter generator module</h4>
+<p>这部份我们主要讨论多个卷积核是如何生成的，如下图：<br>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-12-47.png" alt="卷积核生成"><br>
+过程并不复杂，其实就是通过了两个一维卷积最后分成<span class="math inline">\(m \times C\)</span>个channel，只需要注意第一个一维卷积使用<span class="math inline">\(sigmoid(\bullet)\)</span>进行激活，而第二个不使用激活函数即可。</p>
+<h3 id="experiments">Experiments</h3>
+<h4 id="classification">Classification</h4>
+<figure>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-34-46.png" alt="分类效果对比"><figcaption>分类效果对比</figcaption>
+</figure>
+<h4 id="face-recognition">Face Recognition</h4>
+<figure>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-36-12.png" alt="面部识别效果"><figcaption>面部识别效果</figcaption>
+</figure>
+<h4 id="coco-object-detection-and-segmentation">COCO Object Detection and Segmentation</h4>
+<figure>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-38-14.png" alt="目标检测效果"><figcaption>目标检测效果</figcaption>
+</figure>
+<h3 id="ablation-study">Ablation Study</h3>
+<p>这一部分通过可视化来解释为什么这样做有用，以及使用什么参数比较好。</p>
+<h4 id="visualization-of-dynamic-guided-mask">Visualization of dynamic guided mask</h4>
+<figure>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-40-38.png" alt="效果图"><figcaption>效果图</figcaption>
+</figure>
+<h4 id="different-model-size">Different model size</h4>
+<figure>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-42-36.png" alt="不同模型正确率对比"><figcaption>不同模型正确率对比</figcaption>
+</figure>
+<h4 id="different-region-number">Different region number</h4>
+<figure>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-44-45.png" alt="区域数对结果的影响"><figcaption>区域数对结果的影响</figcaption>
+</figure>
+<h4 id="different-spatial-size">Different spatial size</h4>
+<figure>
+<img src="/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-49-24.png" alt="空间尺寸对效果的影响"><figcaption>空间尺寸对效果的影响</figcaption>
+</figure>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>对每个像素都有权重，这样做的好处是可以充分的学习图像的特征<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>分类、人脸识别、目标检测、语义分割<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>使用ImageNet数据集，Mobile Net、ShuffleNetV2, etc.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>增加每次抽取的信息量<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>增加抽取信息的次数<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>Gregor, K., LeCun, Y.: Emergence of complex-like cells in a temporal product network with local receptive fields. arXiv preprint arXiv:1006.0448 (2010)<a href="#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>Taigman, Y., Yang, M., Ranzato, M., Wolf, L.: Deepface: Closing the gap to humanlevel performance in face verification. In: IEEE Conference on Computer Vision and Pattern Recognition (CVPR). pp. 1701{1708 (2014)<a href="#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p>比如在面部识别和目标检测种，对于不同姿势或者角度的图像<a href="#fnref8" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
 
       
     </div>
@@ -517,7 +587,7 @@ entropy公式如下:<br>
       
         <div class="post-tags">
           
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+            <a href="/tags/DeepLearning/" rel="tag"># DeepLearning</a>
           
         </div>
       
@@ -545,8 +615,8 @@ entropy公式如下:<br>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/30/Word-Embedding/" rel="next" title="Word Embedding">
-                <i class="fa fa-chevron-left"></i> Word Embedding
+              <a href="/2020/07/05/Java虚拟机-Java内存区域-内存溢出异常/" rel="next" title="Java虚拟机-Java内存区域&内存溢出异常">
+                <i class="fa fa-chevron-left"></i> Java虚拟机-Java内存区域&内存溢出异常
               </a>
             
           </div>
@@ -554,10 +624,6 @@ entropy公式如下:<br>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/10/Neighbor-Embedding/" rel="prev" title="Neighbor Embedding">
-                Neighbor Embedding <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -729,7 +795,7 @@ entropy公式如下:<br>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数值特征"><span class="nav-number">1.</span> <span class="nav-text">1.基本数值特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期特征处理"><span class="nav-number">2.</span> <span class="nav-text">2.日期特征处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本特征处理"><span class="nav-number">3.</span> <span class="nav-text">3.文本特征处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间序列的特征挖掘"><span class="nav-number">4.</span> <span class="nav-text">4.时间序列的特征挖掘</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#区域感知动态卷积论文笔记"><span class="nav-number">1.</span> <span class="nav-text">区域感知动态卷积论文笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#related-work"><span class="nav-number">1.2.</span> <span class="nav-text">Related Work</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#spatial-related-convolution"><span class="nav-number">1.2.1.</span> <span class="nav-text">Spatial Related Convolution</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dynamic-mechanism"><span class="nav-number">1.2.2.</span> <span class="nav-text">Dynamic Mechanism</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-region-aware-convolution"><span class="nav-number">1.3.</span> <span class="nav-text">Dynamic Region-Aware Convolution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#learnable-guided-mask"><span class="nav-number">1.4.</span> <span class="nav-text">Learnable guided mask</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#forward-propagation"><span class="nav-number">1.4.1.</span> <span class="nav-text">forward propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#back-propagation"><span class="nav-number">1.4.2.</span> <span class="nav-text">back propagation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter-generator-module"><span class="nav-number">1.4.3.</span> <span class="nav-text">Filter generator module</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#experiments"><span class="nav-number">1.5.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#classification"><span class="nav-number">1.5.1.</span> <span class="nav-text">Classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#face-recognition"><span class="nav-number">1.5.2.</span> <span class="nav-text">Face Recognition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#coco-object-detection-and-segmentation"><span class="nav-number">1.5.3.</span> <span class="nav-text">COCO Object Detection and Segmentation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ablation-study"><span class="nav-number">1.6.</span> <span class="nav-text">Ablation Study</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#visualization-of-dynamic-guided-mask"><span class="nav-number">1.6.1.</span> <span class="nav-text">Visualization of dynamic guided mask</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#different-model-size"><span class="nav-number">1.6.2.</span> <span class="nav-text">Different model size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#different-region-number"><span class="nav-number">1.6.3.</span> <span class="nav-text">Different region number</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#different-spatial-size"><span class="nav-number">1.6.4.</span> <span class="nav-text">Different spatial size</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
