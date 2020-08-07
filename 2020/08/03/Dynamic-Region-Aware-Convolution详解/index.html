@@ -114,7 +114,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-42-36.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-44-45.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/03/Dynamic-Region-Aware-Convolution详解/2020-08-04-21-49-24.png">
-<meta property="og:updated_time" content="2020-08-04T13:50:39.396Z">
+<meta property="og:updated_time" content="2020-08-04T14:08:21.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamic Region-Aware Convolution详解">
 <meta name="twitter:description" content="区域感知动态卷积论文笔记  论文地址:https://arxiv.org/pdf/2003.12243.pdf 该论文提出了DRConv。传统的卷积结构由于权值共享，所以只有通过增加网络宽度和深度来增加网络捕获的图像特征，这种方法会浪费大量的算力。本论文提出的DRConv构造出了一个“智能通道过滤器”，且该过滤器即实现了类似local conv 1的不同像素不同权重的效果，又保证了网络存在平移不变">
@@ -465,7 +465,7 @@
 </blockquote>
 <h3 id="introduction">Introduction</h3>
 <p>由于现在主流的卷积神经网络都是权值共享的，所以每一层能够抽取的信息是有限的，如果想要增加抽取的信息，只能通过增加网络的宽度 <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>和深度 <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>来实现。<br>
-这种传统的方式有很多的取点，比如：</p>
+这种传统的方式有很多的缺点，比如：</p>
 <ol type="1">
 <li>计算量大，计算效率低</li>
 <li>这会造成优化困难，网络调试变得十分复杂</li>
