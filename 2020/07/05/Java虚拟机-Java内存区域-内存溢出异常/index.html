@@ -102,7 +102,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/07/05/Java虚拟机-Java内存区域-内存溢出异常/2020-07-05-18-28-23.png">
 <meta property="og:image" content="http://yoursite.com/2020/07/05/Java虚拟机-Java内存区域-内存溢出异常/运行时内存区域.png">
-<meta property="og:updated_time" content="2020-07-09T14:33:27.322Z">
+<meta property="og:updated_time" content="2020-08-07T09:23:25.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机-Java内存区域&amp;内存溢出异常">
 <meta name="twitter:description" content="Java的HotSpot虚拟机是如何管理内存的呢？对于c++程序员来说他们是“The King of The Memory”，然而对于Java开发者来说他们全然不知。这一部分就来探讨下Java虚拟机的各个区域，这些区域的作用、服务对象以及可能产生的问题。  运行时数据区域 一图以说明：  Java运行数据区域   注：该区域划分是由《Java虚拟机规范》规定。  程序计数器 可以看成当前线程所执">
@@ -467,21 +467,21 @@ Java的多线程机制是通过线程轮流切换、分配处理器执行时间�
 <p>虚拟机栈描述的是<strong>Java方法执行的线程内存模型</strong>: 每个方法被执行的时候，Java虚拟机都会同步创建一个<strong>栈帧</strong>，用来存储方法的信息(<strong>局部变量表</strong>、操作数栈、动态连接、方法出口等)。<br>
 Java虚拟机栈也是线程私有的。在线程将方法从开始运行到完毕的时候，其实就是栈帧从入栈到出栈的过程。</p>
 <h5 id="局部变量表">局部变量表</h5>
-<p>在很多Java教程中都会把Java虚拟机的内存管理描述为堆区或者栈区<sup>[这种说法实际上来自于C和C++]，实际上远比这复杂的多。当然，这里的栈区就可以理解为局部变量表。 局部变量表存放了各种编译时可以知道Java虚拟机的基本数据类型</sup>[boolean、byte、char、short、int、float、long、double] 、对象引用<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> 和returnAddress类型<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>。<br>
+<p>在很多Java教程中都会把Java虚拟机的内存管理描述为堆区或者栈区<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, 实际上远比这复杂的多。当然，这里的栈区就可以理解为局部变量表。 局部变量表存放了各种编译时可以知道Java虚拟机的基本数据类型<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> 、对象引用<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> 和returnAddress类型<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>。<br>
 上述数据类型都是用局部变量槽表示，除了64位的long和double占有两个槽之外，其余变量均占有一个槽。<br>
 局部变量所需空间在编译期就已经完成分配，这里的空间大小都是用槽来衡量。</p>
 <h5 id="该内存区域规定了两类异常">该内存区域规定了两类异常</h5>
 <ol type="1">
 <li>如果线程申请的栈申请的深度大于虚拟机所容许的最大深度，报<strong>StackOverFlow</strong>错误。<br>
 </li>
-<li>如果栈扩展时无法申请到足够的内存，报<strong>OutOfMemory</strong>错误。<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></li>
+<li>如果栈扩展时无法申请到足够的内存，报<strong>OutOfMemory</strong>错误。<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></li>
 </ol>
 <h4 id="本地方法栈">本地方法栈</h4>
 <p>本地方法栈和Java虚拟机栈基本一样，只不过Java虚拟机栈服务Java方法，本地方法栈服务本地(native)方法，在HotSpot中甚至直接将两者合二为一了。<br>
 本地方法栈的错误类型和Java虚拟机栈一样。</p>
 <h4 id="java堆">Java堆</h4>
 <p>和前面的内存结构不同，Java堆是所有线程公有的，在虚拟机启动的时候创建，它也是虚拟机管理的内存中最大的一块。<br>
-Java堆的主要作用是<strong>存放对象实例</strong><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> 。因此Java堆也变成了垃圾回收机制所管理的内存区域<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>。<br>
+Java堆的主要作用是<strong>存放对象实例</strong><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> 。因此Java堆也变成了垃圾回收机制所管理的内存区域<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>。<br>
 &gt; <strong>注意</strong>：现在的垃圾回收机制主要是基于分代理论设计，因此在关于Java堆的资料中常常出现“新生代”、“老年代”、“永久代”、“Eden空间”、“From Survivor空间”、“To Survivor空间”等名词。不过这些只是垃圾回收的<strong>设计风格</strong>，不是Java虚拟机规范对Java虚拟机的划分，且现在HotSpot中也存在着不使用分代理论的垃圾回收器。</p>
 <h5 id="java堆的空间分配方式">Java堆的空间分配方式</h5>
 <p>在空间分配上，Java堆可以在物理上不连续，但是在逻辑上要连续。对于大对象，多数虚拟机也要求了连续的内存空间。</p>
@@ -491,20 +491,20 @@ Java堆的主要作用是<strong>存放对象实例</strong><a href="#fn5" class
 <p>方法区和Java堆类似，在《Java虚拟机规范》中将其描述为Java堆的一个逻辑部分，当然其职责是不同的，所以方法区的小名叫做“<em>非堆</em>”，目的就是和Java堆区分。<br>
 方法区本身和Java堆一样，也是所有线程公有的。</p>
 <h5 id="作用">作用</h5>
-<p>方法区主要存储已被虚拟机<strong>加载的类型信息</strong>、<strong>常量</strong>、<strong>静态变量</strong>、即时编译器编译后的代码缓存等数据。 &gt; 虽然叫方法区，但可能叫<em>永久代</em><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>更贴切，虽然这样叫是错误的。</p>
+<p>方法区主要存储已被虚拟机<strong>加载的类型信息</strong>、<strong>常量</strong>、<strong>静态变量</strong>、即时编译器编译后的代码缓存等数据。 &gt; 虽然叫方法区，但可能叫<em>永久代</em><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>更贴切，虽然这样叫是错误的。</p>
 <h5 id="对方法区的管理">对方法区的管理</h5>
 <p>方法区是约束非常宽松的区域。和Java堆一样，它的内存分配也不需要连续，也是可以选择固定区域或者可扩展。另外，方法区还可以选择不实现垃圾收集。<br>
 方法区主要针对常量池和的回收和类型的卸载，当然由于条件非常苛刻(尤其是类型的卸载)，所以别指望该区域能够节省多大的空间。但是这并不表明对该区域进行回收是没有必要的：以前Sun公司公布的Bug列表中，若干严重Bug就是因为HotSpot对该区域未完全回收造成的内存泄漏。</p>
 <h5 id="方法区可能出现的错误">方法区可能出现的错误</h5>
 <p>当方法区无法满足新的内存分配需求时，报OutOfMemoryError异常。</p>
 <h4 id="运行时常量池">运行时常量池</h4>
-<p>运行时常量池是方法区的一部分，所以在图中并没有标注出来。运行时常量池主要在类加载后存放其<strong>常量池表</strong>，该表存在于Class文件中<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>，其重要用途是存放编译器生成的各种字面量和符号引用。</p>
+<p>运行时常量池是方法区的一部分，所以在图中并没有标注出来。运行时常量池主要在类加载后存放其<strong>常量池表</strong>，该表存在于Class文件中<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>，其重要用途是存放编译器生成的各种字面量和符号引用。</p>
 <h5 id="特点">特点</h5>
 <p>运行时常量池有着其他内存区域所不具有的特点：</p>
 <ol type="1">
-<li>《Java虚拟机规范》没有对该区域做任何细节要求，Java虚拟机对Class文件的每一部分包括常量池的格式都有严格规定<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>。不过一般说来运行时常量池还是保存Class文件中描述的符号引用和由符号引用翻译出来的直接引用。<br>
+<li>《Java虚拟机规范》没有对该区域做任何细节要求，Java虚拟机对Class文件的每一部分包括常量池的格式都有严格规定<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>。不过一般说来运行时常量池还是保存Class文件中描述的符号引用和由符号引用翻译出来的直接引用。<br>
 </li>
-<li>具有动态性，Java语言并不要求常量一定在编译期生成，运行期间也可以将新的常量放入池中，常用的Sting的<em>intern()</em>方法便是使用该特性的例子。</li>
+<li>具有动态性，Java语言并不要求常量一定在编译期生成，运行期间也可以将新的常量放入池中，常用的Sting的 <em>intern()</em> 方法便是使用该特性的例子。</li>
 </ol>
 <h5 id="常量池可能出现的错误">常量池可能出现的错误</h5>
 <p>既然是方法区的一部分，其错误自然和方法区一样，当无法分配新的空间时，虚拟机挥发出OutOfMemoryError的异常。</p>
@@ -520,14 +520,16 @@ Java堆的主要作用是<strong>存放对象实例</strong><a href="#fn5" class
 <hr>
 <ol>
 <li id="fn1"><p><strong>native</strong>关键字定义的方法，非Java语言编写，主要是调用由C或者C++编译生成的高效dll或者so库<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>reference类型，一个对象起始地址的指针或者代表对象的句柄(老虚拟机使用句柄)<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>指向了一条字节码指令地址，用于函数返回<a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>HotSpot不会动态申请栈容量，只有当申请时就失败才会报该错误。而老旧的Classic虚拟机使用动态扩展<a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>《Java虚拟机规范》中描述为：“所有对象实例以及数组都应该在堆上分配。”<a href="#fnref5" class="footnote-back">↩</a></p></li>
-<li id="fn6"><p>在一些资料中也被称为GC堆(garbage collected heap) 不过千万别翻译成垃圾堆<a href="#fnref6" class="footnote-back">↩</a></p></li>
-<li id="fn7"><p>和Java堆一样，分代设计只是一种设计风格，之所以称之为永久代是由于HotSpot使用收集器来管理方法堆而节省代码，但是由于这种方式存在bug，所以到了Java8已经完全废弃了这种做法<a href="#fnref7" class="footnote-back">↩</a></p></li>
-<li id="fn8"><p>Class文件还存放有类的版本、字段、方法、接口等描述信息<a href="#fnref8" class="footnote-back">↩</a></p></li>
-<li id="fn9"><p>这里先说明下动态常量池和静态常量池不是一个东西。JVM在执行某个类的时候，必须经过加载、连接、初始化，而连接又包括验证、准备、解析三个阶段。静态常量池用于存放编译期生成的各种字面量和符号引用，而当类加载到内存中后，jvm就会将静态常量池中的内容存放到运行时常量池中。而字符串常量池存的是引用值，其存在于运行时常量池之中。<a href="#fnref9" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>这种说法实际上来自于C和C++<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>boolean、byte、char、short、int、float、long、double<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>reference类型，一个对象起始地址的指针或者代表对象的句柄(老虚拟机使用句柄)<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>指向了一条字节码指令地址，用于函数返回<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>HotSpot不会动态申请栈容量，只有当申请时就失败才会报该错误。而老旧的Classic虚拟机使用动态扩展<a href="#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>《Java虚拟机规范》中描述为：“所有对象实例以及数组都应该在堆上分配。”<a href="#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p>在一些资料中也被称为GC堆(garbage collected heap) 不过千万别翻译成垃圾堆<a href="#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn9"><p>和Java堆一样，分代设计只是一种设计风格，之所以称之为永久代是由于HotSpot使用收集器来管理方法堆而节省代码，但是由于这种方式存在bug，所以到了Java8已经完全废弃了这种做法<a href="#fnref9" class="footnote-back">↩</a></p></li>
+<li id="fn10"><p>Class文件还存放有类的版本、字段、方法、接口等描述信息<a href="#fnref10" class="footnote-back">↩</a></p></li>
+<li id="fn11"><p>这里先说明下动态常量池和静态常量池不是一个东西。JVM在执行某个类的时候，必须经过加载、连接、初始化，而连接又包括验证、准备、解析三个阶段。静态常量池用于存放编译期生成的各种字面量和符号引用，而当类加载到内存中后，jvm就会将静态常量池中的内容存放到运行时常量池中。而字符串常量池存的是引用值，其存在于运行时常量池之中。<a href="#fnref11" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 
@@ -1477,7 +1479,7 @@ Java堆的主要作用是<strong>存放对象实例</strong><a href="#fn5" class
       
       new needShareButton('#needsharebutton-float', flOptions);
     
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
   
 
@@ -1489,5 +1491,5 @@ Java堆的主要作用是<strong>存放对象实例</strong><a href="#fn5" class
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"letf","width":100,"height":350},"mobile":{"show":false},"log":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"letf","width":100,"height":350},"mobile":{"show":false},"log":false});</script></body>
 </html>
