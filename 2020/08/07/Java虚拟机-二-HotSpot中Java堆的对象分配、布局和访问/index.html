@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java,">
 
 
 
@@ -92,16 +92,18 @@
 
 
 
-<meta name="description" content="鉴往知来，无欲则刚">
-<meta property="og:type" content="website">
-<meta property="og:title" content="残桥断雪的博客">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+<meta name="description" content="在介绍了Java虚拟机的运行时数据区域后，我们对Java虚拟机在运行中放了什么有了一些了解，现在我们要讨论下Java中的对象是如何创建、布局和访问的。  对象的创建 当我们编写Java代码的时候，一个new指令就直接完成了对象的创建，但是这时候Java虚拟机具体是怎么创建一个正常的对象的呢？  检查：当Java字节码遇到new指令的时候，首先先检查这个指令的参数能否在常量池中定位到一个类的符号引">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java虚拟机(二)-HotSpot中Java堆的对象分配、布局和访问">
+<meta property="og:url" content="http://yoursite.com/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/index.html">
 <meta property="og:site_name" content="残桥断雪的博客">
-<meta property="og:description" content="鉴往知来，无欲则刚">
+<meta property="og:description" content="在介绍了Java虚拟机的运行时数据区域后，我们对Java虚拟机在运行中放了什么有了一些了解，现在我们要讨论下Java中的对象是如何创建、布局和访问的。  对象的创建 当我们编写Java代码的时候，一个new指令就直接完成了对象的创建，但是这时候Java虚拟机具体是怎么创建一个正常的对象的呢？  检查：当Java字节码遇到new指令的时候，首先先检查这个指令的参数能否在常量池中定位到一个类的符号引">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-08-14T14:34:34.035Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="残桥断雪的博客">
-<meta name="twitter:description" content="鉴往知来，无欲则刚">
+<meta name="twitter:title" content="Java虚拟机(二)-HotSpot中Java堆的对象分配、布局和访问">
+<meta name="twitter:description" content="在介绍了Java虚拟机的运行时数据区域后，我们对Java虚拟机在运行中放了什么有了一些了解，现在我们要讨论下Java中的对象是如何创建、布局和访问的。  对象的创建 当我们编写Java代码的时候，一个new指令就直接完成了对象的创建，但是这时候Java虚拟机具体是怎么创建一个正常的对象的呢？  检查：当Java字节码遇到new指令的时候，首先先检查这个指令的参数能否在常量池中定位到一个类的符号引">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Java/">
+  <link rel="canonical" href="http://yoursite.com/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/">
 
 
 
 
 
-  <title>标签: Java | 残桥断雪的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Java虚拟机(二)-HotSpot中Java堆的对象分配、布局和访问 | 残桥断雪的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -156,7 +158,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
   <a href="https://github.com/YaoLaiGang" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -292,78 +294,275 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Java<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="laigang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/p.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="残桥断雪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/" itemprop="url">
-              
-                <span itemprop="name">Java虚拟机(二)-HotSpot中Java堆的对象分配、布局和访问</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java虚拟机(二)-HotSpot中Java堆的对象分配、布局和访问</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-08-07T17:32:30+08:00" content="2020-08-07">
-          08-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-07T17:32:30+08:00">
+                2020-08-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java虚拟机/" itemprop="url" rel="index">
+                    <span itemprop="name">Java虚拟机</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/" class="leancloud_visitors" data-flag-title="Java虚拟机(二)-HotSpot中Java堆的对象分配、布局和访问">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/07/05/Java虚拟机-Java内存区域-内存溢出异常/" itemprop="url">
-              
-                <span itemprop="name">Java虚拟机-Java内存区域&内存溢出异常</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-07-05T18:18:05+08:00" content="2020-07-05">
-          07-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <blockquote>
+<p>在介绍了Java虚拟机的运行时数据区域后，我们对Java虚拟机在运行中放了什么有了一些了解，现在我们要讨论下Java中的对象是如何创建、布局和访问的。</p>
+</blockquote>
+<h3 id="对象的创建">对象的创建</h3>
+<p>当我们编写Java代码的时候，一个new指令就直接完成了对象的创建，但是这时候Java虚拟机具体是怎么创建一个正常的对象的呢？</p>
+<ol type="1">
+<li><strong>检查</strong>：当Java字节码遇到new指令的时候，首先先检查这个指令的参数能否在常量池中定位到一个类的符号引用，并检查这个符号引用代表的类是否已经被加载、解析和初始化过。如果没有，就要先执行相应的类加载过程。<br>
+</li>
+<li><p><strong>内存分配</strong>：在类加载完成后，对象所需要的内存便可以确定，在Java堆中划分出一块确定大小的内存即可。</p>
+<blockquote>
+<p><strong>注意</strong>：需要特别说明下这里的内存分配，Java堆中的内存分配有两种情况：</p>
+<ol type="1">
+<li><p><strong>内存碰撞</strong>：如果内存是规整的，那么虚拟机只需要维护一个指针在分界点区分已使用和未使用内存区域即可，当分配内存的时候只需要将指针右移。</p></li>
+<li><p><strong>空闲列表</strong>：如果内存不规整，虚拟机就只能维护一个列表，来记录哪些内存是可用的，在分配的时候通过列表来寻找空闲内存，分配完成后再修改该表。 <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p></li>
+</ol>
+<p><strong>注意</strong>：由于对象创建在虚拟机中非常频繁，并且是并发操作，因此不得不考虑线程安全问题，对此也有两种方案：</p>
+<ol type="1">
+<li><p>对分配空间内存的工作进行同步处理，即采用CAS配上失败重试的方式保证更新操作的原子性。</p></li>
+<li><p>把内存分配的工作按照线程划分在不同的空间之中进行。即每个线程都先分配一小块内存(<strong>本地线程分配缓冲</strong>)，那个线程需要内存，就直接在对应线程的本地缓冲区中分配。当本地缓冲区分配完了，就需要再分配新的缓冲区，只有这时候才进行同步锁定。</p></li>
+</ol>
+</blockquote></li>
+<li><strong>初始化</strong>：将申请到的内存空间都初始化为零值。</li>
+<li><strong>对对象进行必要的设置</strong>：例如这个对象是哪个类的实例？对象的哈希码？如何找到类的元数据信息？这些信息存放在<strong>信息头</strong>当中，后面会详细介绍。</li>
+<li><p><strong>构造函数</strong>：其实上面几步对于虚拟机来说已经初始化完成了，但是对于对象本身还需要执行构造函数，也就是Class文件中的&lt;init&gt;()方法。</p></li>
+</ol>
+<h3 id="对象的内存布局">对象的内存布局</h3>
+<p>在虚拟机中对象的内存存放在Java堆中，可以将其划分为三个部分：对象头、实例数据、对其填充。我们娓娓道来：</p>
+<h4 id="对象头">对象头</h4>
+<p>HotSpot中的对象头包括两类信息：</p>
+<ol type="1">
+<li>存储对象自身的<strong>运行时数据</strong>，如哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等。这部份信息被称之为<strong>Mark Word</strong>，其长度和虚拟机的位数相同，即32位虚拟机长度就为32位，64位虚拟机就是64位；需要特殊说明的是，由于空间有限，该部分信息被设计成了动态定义的数据结构。<br>
+</li>
+<li><strong>类型指针</strong>，就是对象指向其类型元数据的指针，Java虚拟机通过该指针来确定对象的类型。当然，不是所有的虚拟机必须在对象上保存类型指针，这个后面会说明。如果是数组的话，在对象头还会有一块用于记录数组长度的数据。</li>
+</ol>
+<h3 id="实例数据">实例数据</h3>
+<p>这是对象真正存储的有效信息，也就是我们在类定义的各种类型的字段内容。<br>
+这部份内容的存储顺序受虚拟机分配策略参数(FieldsAllocationStyle参数)和字段在Java源码中定义的顺序影响。默认的顺序是longs/doubles、 ints、 shorts/chars、 bytes/booleans、 oops（OrdinaryObject Pointers， OOPs），也就是相同大小的数据总是会被分配到一块。</p>
+<h3 id="对齐填充">对齐填充</h3>
+<p>这部份内容可有可无，就是普通的占位符，没有特殊的意义。 HotSpot的自动内存管理系统要求对象起始地址必须是8字节的整数倍，即任何对象的大小都必须是8字节的整数倍(对象头部分已经被设计为了8字节的整数倍)，所以如果实例数据部分不是8的倍数，就需要该部分来补全。</p>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>这里需要注意，使用什么分配方式是由内存是否规整决定的，而内存是否规整是由虚拟机采用的垃圾回收机制是否带有<strong>空间压缩整理</strong>所决定的，如果使用Serial、ParNew等带有压缩整理的收集器，就会使用指针碰撞，简单且高效；如果使用CMS这种基于清除算法的收集器时，理论上就只能采用空闲列表这种较为复杂的方式来分配内存<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/03/Dynamic-Region-Aware-Convolution详解/" rel="next" title="Dynamic Region-Aware Convolution详解">
+                <i class="fa fa-chevron-left"></i> Dynamic Region-Aware Convolution详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -371,6 +570,13 @@
 
 
           
+
+  
+    <div id="gitalk-container">
+    </div>
+  
+
+
 
         </div>
         
@@ -391,8 +597,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -489,6 +704,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的创建"><span class="nav-number">1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">2.</span> <span class="nav-text">对象的内存布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象头"><span class="nav-number">2.1.</span> <span class="nav-text">对象头</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例数据"><span class="nav-number">3.</span> <span class="nav-text">实例数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对齐填充"><span class="nav-number">4.</span> <span class="nav-text">对齐填充</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -664,6 +895,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -704,6 +939,24 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  <script src="/js/src/md5.min.js"></script>
+
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'cb25b5734f6b909a92a5',
+          clientSecret: 'ebf9b5847078529742936ecb0553c1549b6352f1',
+          repo: 'yaolaigang.github.io',
+          owner: 'YaoLaiGang',
+          admin: ['YaoLaiGang'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
@@ -1184,26 +1437,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
