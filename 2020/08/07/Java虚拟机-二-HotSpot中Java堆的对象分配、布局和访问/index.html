@@ -101,8 +101,8 @@
 <meta property="og:description" content="在介绍了Java虚拟机的运行时数据区域后，我们对Java虚拟机在运行中放了什么有了一些了解，现在我们要讨论下Java中的对象是如何创建、布局和访问的。  对象的创建 当我们编写Java代码的时候，一个new指令就直接完成了对象的创建，但是这时候Java虚拟机具体是怎么创建一个正常的对象的呢？  检查：当Java字节码遇到new指令的时候，首先先检查这个指令的参数能否在常量池中定位到一个类的符号引">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/2020-08-15-11-33-37.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/2020-08-15-11-45-33.png">
-<meta property="og:updated_time" content="2020-08-15T09:02:17.635Z">
+<meta property="og:image" content="http://yoursite.com/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/2020-09-02-08-42-06.png">
+<meta property="og:updated_time" content="2020-09-02T00:42:54.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机(二)-HotSpot中Java堆的对象分配、布局和访问">
 <meta name="twitter:description" content="在介绍了Java虚拟机的运行时数据区域后，我们对Java虚拟机在运行中放了什么有了一些了解，现在我们要讨论下Java中的对象是如何创建、布局和访问的。  对象的创建 当我们编写Java代码的时候，一个new指令就直接完成了对象的创建，但是这时候Java虚拟机具体是怎么创建一个正常的对象的呢？  检查：当Java字节码遇到new指令的时候，首先先检查这个指令的参数能否在常量池中定位到一个类的符号引">
@@ -492,7 +492,7 @@
 <h4 id="句柄">句柄</h4>
 <p><img src="/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/2020-08-15-11-33-37.png" alt="通过句柄访问对象"> 如上图，首先需要额外在Java堆中分配一块句柄池，reference中存放的就是句柄地址，句柄中存放的是对象实例数据和类型数据的地址信息。</p>
 <h4 id="直接指针">直接指针</h4>
-<p><img src="/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/2020-08-15-11-45-33.png" alt="通过直接指针访问对象"><br>
+<p><img src="/2020/08/07/Java虚拟机-二-HotSpot中Java堆的对象分配、布局和访问/2020-09-02-08-42-06.png" alt="通过直接指针访问对象"><br>
 如上图，使用直接指针的时候，reference字节指向对象的实例信息，但是需要考虑如何放置访问类型数据的相关信息。如果只是访问对象，就减少了一次访问次数。</p>
 <h4 id="两种访问方式的对比">两种访问方式的对比</h4>
 <ol type="1">
