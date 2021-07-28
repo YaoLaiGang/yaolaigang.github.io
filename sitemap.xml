@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/30/%E5%B0%8F%E8%AE%B0/</loc>
+    
+    <lastmod>2021-07-28T13:35:08.911Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/08/07/Java%E8%99%9A%E6%8B%9F%E6%9C%BA-%E4%BA%8C-HotSpot%E4%B8%ADJava%E5%A0%86%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E3%80%81%E5%B8%83%E5%B1%80%E5%92%8C%E8%AE%BF%E9%97%AE/</loc>
     
     <lastmod>2020-09-02T00:42:54.629Z</lastmod>
@@ -65,13 +72,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/08/30/%E5%B0%8F%E8%AE%B0/</loc>
-    
-    <lastmod>2019-08-31T15:05:09.328Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2019-08-30T01:49:29.565Z</lastmod>
@@ -79,7 +79,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
+    <loc>http://yoursite.com/timeline/index.html</loc>
     
     <lastmod>2019-08-30T01:49:29.565Z</lastmod>
     
@@ -93,7 +93,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/timeline/index.html</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2019-08-30T01:49:29.565Z</lastmod>
     
