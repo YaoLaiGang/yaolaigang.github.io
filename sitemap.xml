@@ -4,7 +4,7 @@
   <url>
     <loc>http://yoursite.com/2019/08/30/%E5%B0%8F%E8%AE%B0/</loc>
     
-    <lastmod>2021-07-28T13:35:08.911Z</lastmod>
+    <lastmod>2021-07-28T13:37:58.582Z</lastmod>
     
   </url>
   
@@ -72,20 +72,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
-    
-    <lastmod>2019-08-30T01:49:29.565Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/timeline/index.html</loc>
-    
-    <lastmod>2019-08-30T01:49:29.565Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/archives/index.html</loc>
     
     <lastmod>2019-08-30T01:49:29.565Z</lastmod>
@@ -100,14 +86,28 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/05/24/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/</loc>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2019-08-30T01:49:29.565Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/timeline/index.html</loc>
+    
+    <lastmod>2019-08-30T01:49:29.565Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2019-08-30T01:49:29.561Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/about/index.html</loc>
+    <loc>http://yoursite.com/2019/05/24/%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/</loc>
     
     <lastmod>2019-08-30T01:49:29.561Z</lastmod>
     
